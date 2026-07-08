@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function CareerApplicationForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [resumeName, setResumeName] = useState("");
+
+  function handleResumeChange(e: ChangeEvent<HTMLInputElement>) {
+    setResumeName(e.target.files?.[0]?.name ?? "");
+  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,6 +34,7 @@ export default function CareerApplicationForm() {
 
       setStatus("success");
       form.reset();
+      setResumeName("");
     } catch (err) {
       setStatus("error");
       setErrorMessage(
@@ -131,14 +137,23 @@ export default function CareerApplicationForm() {
           <label htmlFor="resume" className="text-sm font-medium text-navy">
             Resume / CV
           </label>
-          <input
-            id="resume"
-            name="resume"
-            type="file"
-            required
-            accept=".pdf,.doc,.docx"
-            className="mt-1.5 w-full rounded-lg border border-navy/20 px-4 py-2 text-sm text-navy outline-none transition-shadow file:mr-4 file:rounded-full file:border-0 file:bg-gradient-navy file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-white focus:border-saffron focus:ring-2 focus:ring-saffron/20"
-          />
+          <label
+            htmlFor="resume"
+            className="mt-1.5 flex w-full cursor-pointer items-center justify-center rounded-lg border border-navy/20 px-4 py-2.5 text-center text-sm text-navy outline-none transition-shadow hover:border-saffron/60 focus-within:border-saffron focus-within:ring-2 focus-within:ring-saffron/20"
+          >
+            <span className={resumeName ? "text-navy" : "text-navy/50"}>
+              {resumeName || "No file chosen"}
+            </span>
+            <input
+              id="resume"
+              name="resume"
+              type="file"
+              required
+              accept=".pdf,.doc,.docx"
+              onChange={handleResumeChange}
+              className="sr-only"
+            />
+          </label>
           <p className="mt-1.5 text-xs text-navy/50">PDF or Word document, up to 5MB.</p>
         </div>
 
