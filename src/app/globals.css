@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #16171b;
+
+  /* "navy" now maps to near-black ink — kept as the same token name so all
+     existing text-navy/border-navy usage inherits the black theme automatically */
+  --color-navy: #16171b;
+  --color-navy-light: #34363b;
+  --color-saffron: #ee741e;
+  --color-saffron-light: #ffb648;
+  --color-gold: #cf9a3f;
+  --color-gold-light: #f0c878;
+  --color-mist: #e7e4dd;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--color-navy);
+  --color-navy-light: var(--color-navy-light);
+  --color-saffron: var(--color-saffron);
+  --color-saffron-light: var(--color-saffron-light);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-mist: var(--color-mist);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-garet: var(--font-quicksand);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 900px 650px at 12% 8%, color-mix(in srgb, var(--color-navy) 8%, transparent), transparent 70%),
+    radial-gradient(ellipse 800px 600px at 88% 28%, color-mix(in srgb, var(--color-navy) 6%, transparent), transparent 70%),
+    radial-gradient(ellipse 700px 750px at 20% 75%, color-mix(in srgb, var(--color-navy) 7%, transparent), transparent 70%),
+    radial-gradient(ellipse 850px 650px at 85% 92%, color-mix(in srgb, var(--color-navy) 6%, transparent), transparent 70%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 768px) {
+  /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* Shared banner photo background — stays fixed in the viewport as the page scrolls */
+.bg-banner {
+  background-image: url("/header-banner.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+}
+
+/* Footer-specific photo background — same fixed behavior, different photo */
+.bg-banner-footer {
+  background-image: url("/footer-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
+  .bg-banner,
+  .bg-banner-footer {
+    background-attachment: scroll;
+  }
+}
+
+/* Light section backgrounds that let the fixed banner photo show through
+   faintly beneath a low-opacity beige wash, instead of a flat color tint */
+.bg-section-saffron {
+  background-image:
+    linear-gradient(color-mix(in srgb, #fdf0e2 88%, transparent), color-mix(in srgb, #fdf0e2 88%, transparent)),
+    url("/header-banner.jpg");
+  background-size: cover, cover;
+  background-position: center, center 40%;
+  background-attachment: scroll, fixed;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.bg-section-mixed {
+  background-image:
+    linear-gradient(color-mix(in srgb, #fbf1ea 88%, transparent), color-mix(in srgb, #fbf1ea 88%, transparent)),
+    url("/header-banner.jpg");
+  background-size: cover, cover;
+  background-position: center, center 40%;
+  background-attachment: scroll, fixed;
+  background-repeat: no-repeat, no-repeat;
+}
+
+@media (max-width: 768px) {
+  /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
+  .bg-section-saffron,
+  .bg-section-mixed {
+    background-attachment: scroll, scroll;
+  }
+}
+
+/* Gradients — black theme with saffron/gold accents (no green, no blue) */
+.bg-gradient-hero {
+  background: linear-gradient(135deg, #0a0a0b 0%, #1c1d20 55%, #2c2e33 100%);
+}
+
+/* Deeper, higher-contrast variant for surfaces carrying body text (footer) */
+.bg-gradient-footer {
+  background: linear-gradient(160deg, #000000 0%, #0a0a0b 45%, #17181c 100%);
+}
+
+.bg-gradient-navy {
+  background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+}
+
+.bg-gradient-saffron {
+  background: linear-gradient(135deg, var(--color-saffron), var(--color-saffron-light));
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+}
+
+.bg-gradient-brand {
+  background: linear-gradient(
+    135deg,
+    var(--color-saffron) 0%,
+    var(--color-saffron-light) 50%,
+    var(--color-saffron) 100%
+  );
+}
+
+.text-gradient-brand {
+  background: linear-gradient(
+    100deg,
+    var(--color-saffron-light) 0%,
+    #ffffff 50%,
+    var(--color-saffron-light) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-navy {
+  background: linear-gradient(100deg, var(--color-navy), var(--color-navy-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-saffron {
+  background: linear-gradient(100deg, var(--color-saffron), var(--color-saffron-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(100deg, var(--color-gold), var(--color-gold-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-blob {
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+/* Low-opacity "field" section backgrounds */
+.bg-field-navy {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--color-navy) 3%, transparent) 0%, color-mix(in srgb, var(--color-navy) 1%, transparent) 100%);
+}
+
+.bg-field-saffron {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--color-saffron) 4%, transparent) 0%, color-mix(in srgb, var(--color-saffron) 1%, transparent) 100%);
+}
+
+.bg-field-gold {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--color-gold) 5%, transparent) 0%, color-mix(in srgb, var(--color-gold) 1.5%, transparent) 100%);
+}
+
+.bg-field-mixed {
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-navy) 2.5%, transparent) 0%,
+    color-mix(in srgb, var(--color-saffron) 2.5%, transparent) 50%,
+    color-mix(in srgb, var(--color-gold) 3%, transparent) 100%
+  );
+}
+
+/* Elegant glass card treatment */
+.card-glass {
+  background: color-mix(in srgb, white 70%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--color-navy) 8%, transparent);
+}
+
+/* Justified body copy with clean wrapping */
+.text-body {
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.8;
+}
+
+/* Scroll-reveal transitions */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero entrance animation (above-the-fold content, not scroll-triggered) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-in-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.animate-in-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.animate-in-delay-3 {
+  animation-delay: 0.36s;
+}
+
+/* Accordion expand transition */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-panel > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-in {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .bg-banner {
+    background-attachment: scroll;
+  }
+}
