@@ -212,7 +212,7 @@ export default function InsightForm({ initial }: { initial?: Insight }) {
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
                   onChange={handlePhotoChange}
-                  className="block w-full text-sm text-navy outline-none file:mr-4 file:rounded-full file:border-0 file:bg-gradient-navy file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-white"
+                  className="block w-full text-sm text-navy outline-none file:mr-4 file:rounded-full file:border-0 file:bg-[linear-gradient(135deg,var(--color-navy),var(--color-navy-light))] file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-white"
                 />
                 <p className="mt-1 text-xs text-navy/50">JPEG, PNG, or WebP, up to 2MB.</p>
               </div>
