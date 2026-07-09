@@ -206,11 +206,19 @@ body {
   border: 1px solid color-mix(in srgb, var(--color-navy) 8%, transparent);
 }
 
-/* Justified body copy with clean wrapping */
+/* Justified body copy with clean wrapping. Justify is skipped on narrow
+   screens, where it stretches short lines into ugly gaps — left-aligned
+   reads better there. Desktop/tablet keep the justified look unchanged. */
 .text-body {
-  text-align: justify;
+  text-align: left;
   hyphens: auto;
   line-height: 1.8;
+}
+
+@media (min-width: 640px) {
+  .text-body {
+    text-align: justify;
+  }
 }
 
 /* Scroll-reveal transitions */
