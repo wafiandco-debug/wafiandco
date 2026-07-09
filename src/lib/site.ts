@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "WAFI & CO.",
   fullName: "WAFI & CO., Chartered Accountants",
+  url: "https://wafiandco.vercel.app",
   description:
     "Audit, Virtual CFO, GST, ITR, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services in Calicut, Kerala.",
   phone: "+91 90488 69699",

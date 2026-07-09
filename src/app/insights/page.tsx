@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: "Insights | " + siteConfig.name,
   description:
     "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
+  alternates: { canonical: `${siteConfig.url}/insights` },
+  openGraph: {
+    title: "Insights | " + siteConfig.name,
+    description:
+      "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
+    url: `${siteConfig.url}/insights`,
+    type: "website",
+  },
 };
 
 export const revalidate = 60;
@@ -57,13 +65,24 @@ export default async function InsightsPage() {
                   <p className="text-body mt-2 text-sm leading-relaxed text-navy/70">
                     {post.excerpt}
                   </p>
-                  <time className="mt-4 block text-xs text-navy/50">
-                    {new Date(post.date).toLocaleDateString("en-IN", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </time>
+                  <div className="mt-4 flex flex-wrap items-center gap-x-2 text-xs text-navy/50">
+                    {post.author_name && (
+                      <>
+                        <span className="font-medium text-navy/70">
+                          {post.author_name}
+                          {post.author_position ? `, ${post.author_position}` : ""}
+                        </span>
+                        <span aria-hidden="true">·</span>
+                      </>
+                    )}
+                    <time>
+                      {new Date(post.date).toLocaleDateString("en-IN", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </div>
                 </Link>
               </Reveal>
             ))}

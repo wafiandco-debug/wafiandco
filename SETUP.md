@@ -42,7 +42,10 @@ variables. Nothing here requires touching code again.
      excerpt text not null,
      content text not null,
      date date not null default current_date,
-     created_at timestamptz not null default now()
+     created_at timestamptz not null default now(),
+     author_name text,
+     author_position text,
+     author_photo_url text
    );
 
    alter table insights enable row level security;
@@ -58,6 +61,26 @@ variables. Nothing here requires touching code again.
      `SUPABASE_SERVICE_ROLE_KEY`
 4. Until these are set, the Insights pages keep showing the three built-in
    sample articles — the site never breaks.
+
+## 3b. Author credit fields (run this once, in the Supabase SQL editor)
+
+This adds the author name, position, and photo fields to the Insights table,
+plus a storage bucket for the uploaded photos.
+
+```sql
+alter table insights
+  add column if not exists author_name text,
+  add column if not exists author_position text,
+  add column if not exists author_photo_url text;
+
+insert into storage.buckets (id, name, public)
+values ('author-photos', 'author-photos', true)
+on conflict (id) do nothing;
+
+create policy "Public read access for author photos"
+on storage.objects for select
+using (bucket_id = 'author-photos');
+```
 
 ## 4. The admin panel itself
 

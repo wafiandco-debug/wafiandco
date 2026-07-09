@@ -3,6 +3,7 @@ import { Inter, Lora, Quicksand } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,6 +22,7 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: "WAFI & CO. | Chartered Accountants",
   description:
     "WAFI & CO., Chartered Accountants — Audit, Virtual CFO, GST, ITR, MCA Filings, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services in Calicut, Kerala.",

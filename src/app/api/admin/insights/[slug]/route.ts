@@ -11,7 +11,16 @@ export async function PUT(
 
   const { slug } = await params;
   const body = await req.json().catch(() => null);
-  const { title, category, excerpt, content, date } = body ?? {};
+  const {
+    title,
+    category,
+    excerpt,
+    content,
+    date,
+    author_name,
+    author_position,
+    author_photo_url,
+  } = body ?? {};
 
   if (!title || !category || !excerpt || !content || !date) {
     return NextResponse.json({ error: "All fields are required." }, { status: 400 });
@@ -19,7 +28,16 @@ export async function PUT(
 
   const { error } = await supabaseAdmin
     .from("insights")
-    .update({ title, category, excerpt, content, date })
+    .update({
+      title,
+      category,
+      excerpt,
+      content,
+      date,
+      author_name: author_name || null,
+      author_position: author_position || null,
+      author_photo_url: author_photo_url || null,
+    })
     .eq("slug", slug);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

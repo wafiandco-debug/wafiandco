@@ -7,6 +7,9 @@ export type Insight = {
   content: string;
   date: string;
   category: string;
+  author_name?: string | null;
+  author_position?: string | null;
+  author_photo_url?: string | null;
 };
 
 // Used until the Supabase "insights" table is configured (see SETUP.md),
