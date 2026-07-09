@@ -21,6 +21,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Please fill in all required fields." }, { status: 400 });
   }
 
+  if (!(resume instanceof File) || resume.size === 0) {
+    return NextResponse.json({ error: "Please attach your resume / CV." }, { status: 400 });
+  }
+
   const transporter = getTransporter();
   if (!transporter) {
     return NextResponse.json(
