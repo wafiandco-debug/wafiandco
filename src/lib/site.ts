@@ -17,6 +17,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/wafiandco_ca/",
     googleProfile: "https://share.google/VzTK3Ffd51uRMbedq",
     facebook: "",
+    whatsapp: "https://wa.me/919048869699",
   },
 };
 

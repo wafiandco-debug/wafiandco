@@ -39,7 +39,8 @@ export default function CareerPage() {
             Careers
           </p>
           <h1 className="animate-in animate-in-delay-1 mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
-            Build your career with{" "}
+            Build your career with
+            <br />
             <span className="text-gradient-brand">WAFI & CO.</span>
           </h1>
           <p className="text-body animate-in animate-in-delay-2 mt-6 max-w-xl text-lg text-white/80">

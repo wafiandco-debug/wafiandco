@@ -92,6 +92,25 @@ export default function Footer() {
             </ul>
             <div className="mt-5 flex gap-4">
               <a
+                href={siteConfig.social.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="inline-block transition-all duration-300 hover:scale-110 hover:text-saffron-light"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3a9 9 0 0 0-7.75 13.53L3 21l4.6-1.21A9 9 0 1 0 12 3Z"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
+                  <path
+                    d="M8.5 8.5c-.3.6-.5 1.3-.3 2 .4 1.6 2.7 3.9 4.3 4.3.7.2 1.4 0 2-.3.3-.15.5-.5.4-.85l-.2-.7a.6.6 0 0 0-.4-.4l-1-.3a.6.6 0 0 0-.6.15l-.3.3c-.6-.3-1.5-1.2-1.8-1.8l.3-.3a.6.6 0 0 0 .15-.6l-.3-1a.6.6 0 0 0-.4-.4l-.7-.2a.6.6 0 0 0-.85.4Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
