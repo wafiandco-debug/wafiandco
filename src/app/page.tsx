@@ -27,6 +27,10 @@ const cardGradients = [
 
 const industryAccents = ["text-navy", "text-saffron", "text-gold"];
 
+const industryColumns = [0, 1, 2].map((col) =>
+  industries.slice(col * 6, col * 6 + 6)
+);
+
 export default function Home() {
   return (
     <>
@@ -120,17 +124,21 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal delay={100}>
-            <div className="mt-10 columns-1 gap-x-10 sm:columns-2 lg:columns-3">
-              {industries.map((industry, i) => (
-                <div
-                  key={industry.slug}
-                  className="flex items-center gap-4 break-inside-avoid py-2.5"
-                >
-                  <IndustryIcon
-                    slug={industry.slug}
-                    className={`h-7 w-7 shrink-0 ${industryAccents[i % industryAccents.length]}`}
-                  />
-                  <span className="font-medium text-navy">{industry.label}</span>
+            <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-2.5 sm:grid-cols-3">
+              {industryColumns.map((column, colIndex) => (
+                <div key={colIndex} className="grid gap-y-2.5">
+                  {column.map((industry, i) => (
+                    <div
+                      key={industry.slug}
+                      className="flex items-center gap-4 py-0.5"
+                    >
+                      <IndustryIcon
+                        slug={industry.slug}
+                        className={`h-7 w-7 shrink-0 ${industryAccents[(colIndex * 6 + i) % industryAccents.length]}`}
+                      />
+                      <span className="font-medium text-navy">{industry.label}</span>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

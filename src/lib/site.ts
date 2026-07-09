@@ -116,7 +116,6 @@ export const industries = [
   { slug: "automotive", label: "Automotive Industry" },
   { slug: "sports-brands", label: "Sports Brands" },
   { slug: "retail", label: "Retail" },
-  { slug: "agriculture", label: "Agricultural Business" },
   { slug: "media", label: "Media & Communication" },
   { slug: "travel", label: "Travel & Tourism" },
   { slug: "logistics", label: "Logistic & Transport" },
