@@ -123,7 +123,7 @@ export default function ContactPage() {
               <iframe
                 title="WAFI & CO. office location"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(
-                  siteConfig.address
+                  siteConfig.fullName
                 )}&output=embed`}
                 width="100%"
                 height="320"
