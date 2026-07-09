@@ -49,10 +49,10 @@ export default function ContactPage() {
                 </dt>
                 <dd className="mt-1">
                   <a
-                    href={`mailto:${siteConfig.email}`}
+                    href={`mailto:${siteConfig.publicEmail}`}
                     className="transition-colors hover:text-saffron"
                   >
-                    {siteConfig.email}
+                    {siteConfig.publicEmail}
                   </a>
                 </dd>
               </div>
@@ -66,22 +66,35 @@ export default function ContactPage() {
                 <dt className="text-xs font-semibold uppercase tracking-wide text-saffron">
                   Follow us
                 </dt>
-                <dd className="mt-1 flex gap-4">
+                <dd className="mt-2 flex gap-4">
                   <a
                     href={siteConfig.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-saffron"
+                    aria-label="Instagram"
+                    className="inline-block transition-all duration-300 hover:scale-110 hover:text-saffron"
                   >
-                    Instagram
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
+                      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
+                      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+                    </svg>
                   </a>
                   <a
                     href={siteConfig.social.googleProfile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-saffron"
+                    aria-label="Google Business Profile"
+                    className="inline-block transition-all duration-300 hover:scale-110 hover:text-saffron"
                   >
-                    Google Profile
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      />
+                      <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" strokeWidth="1.8" />
+                    </svg>
                   </a>
                 </dd>
               </div>

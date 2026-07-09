@@ -6,7 +6,12 @@ export const siteConfig = {
     "Audit, Virtual CFO, GST, ITR, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services in Calicut, Kerala.",
   phone: "+91 90488 69699",
   phoneHref: "tel:+919048869699",
+  // Backend recipient for form submissions (Contact + Career) — do not
+  // change without also updating GMAIL_USER, since mail is sent via this
+  // Gmail account's SMTP credentials.
   email: "wafiandco@gmail.com",
+  // Publicly displayed contact email (Footer, Contact page).
+  publicEmail: "info@wafiandco.com",
   address: "Floor II, R Square, Puthiyangadi, Calicut - 673021",
   social: {
     instagram: "https://www.instagram.com/wafiandco_ca/",

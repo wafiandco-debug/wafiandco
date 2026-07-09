@@ -84,8 +84,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${siteConfig.email}`} className="whitespace-nowrap transition-colors hover:text-saffron-light">
-                  {siteConfig.email}
+                <a href={`mailto:${siteConfig.publicEmail}`} className="whitespace-nowrap transition-colors hover:text-saffron-light">
+                  {siteConfig.publicEmail}
                 </a>
               </li>
               <li className="leading-snug">{siteConfig.address}</li>
