@@ -57,7 +57,7 @@ const details: Record<string, string[]> = {
   certifications: [
     "Net worth certificates",
     "Turnover certificates",
-    "Certificates for bank loans and tenders",
+    "Certificates for Tenders",
     "Other statutory and regulatory certifications",
   ],
   advisory: [
