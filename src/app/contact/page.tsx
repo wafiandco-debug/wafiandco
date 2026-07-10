@@ -108,6 +108,21 @@ export default function ContactPage() {
                     </svg>
                   </a>
                   <a
+                    href={siteConfig.social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="inline-block transition-all duration-300 hover:scale-110 hover:text-saffron"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" strokeWidth="1.8" />
+                      <path
+                        d="M14 8h-1.5c-1 0-1.5.5-1.5 1.5V11H14l-.3 2H11v6H8.5v-6H7v-2h1.5V9.2C8.5 7.2 9.7 6 11.7 6H14v2Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </a>
+                  <a
                     href={siteConfig.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"

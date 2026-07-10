@@ -16,7 +16,7 @@ export const siteConfig = {
   social: {
     instagram: "https://www.instagram.com/wafiandco_ca/",
     googleProfile: "https://share.google/VzTK3Ffd51uRMbedq",
-    facebook: "",
+    facebook: "https://www.facebook.com/share/18g6Vp18WW/",
     whatsapp: "https://wa.me/919048869699",
     linkedin: "https://www.linkedin.com/company/wafi-co-chartered-accountants/",
   },
