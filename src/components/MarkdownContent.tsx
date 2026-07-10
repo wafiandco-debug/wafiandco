@@ -154,5 +154,5 @@ export default function MarkdownContent({ content }: { content: string }) {
     );
   }
 
-  return <div className="text-body">{blocks}</div>;
+  return <div className="text-body-justify">{blocks}</div>;
 }

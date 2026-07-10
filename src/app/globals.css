@@ -221,6 +221,14 @@ body {
   }
 }
 
+/* Always-justified variant for Insights article content — unlike the rest
+   of the site, article body copy stays justified on mobile too. */
+.text-body-justify {
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.8;
+}
+
 /* Scroll-reveal transitions */
 .reveal {
   opacity: 0;

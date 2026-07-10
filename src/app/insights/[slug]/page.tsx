@@ -122,11 +122,11 @@ export default async function InsightPage({
           </div>
         </div>
       )}
-      <p className="text-body mt-8 text-lg text-navy/75">
+      <p className="text-body-justify mt-8 text-lg text-navy/75">
         {post.excerpt}
       </p>
       <MarkdownContent content={post.content} />
-      <p className="text-body mt-6 text-navy/70">
+      <p className="text-body-justify mt-6 text-navy/70">
         For advice specific to your situation, please{" "}
         <Link href="/contact" className="text-saffron transition-colors hover:text-gold">
           get in touch with our team
