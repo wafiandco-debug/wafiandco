@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getInsights } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 
+export const revalidate = 60;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const insights = await getInsights();
 
