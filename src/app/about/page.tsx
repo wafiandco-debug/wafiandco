@@ -154,14 +154,14 @@ export default function AboutPage() {
           <h2 className="font-serif text-2xl text-navy">Founder</h2>
         </Reveal>
         <Reveal delay={100} className="mt-8">
-          <div className="card-glass grid gap-8 rounded-3xl p-8 sm:grid-cols-[220px_1fr] sm:items-start">
-            <div className="mx-auto h-[220px] w-[220px] shrink-0 overflow-hidden rounded-2xl bg-field-navy sm:mx-0">
+          <div className="card-glass grid gap-8 rounded-3xl p-8 sm:grid-cols-[240px_1fr] sm:items-start">
+            <div className="mx-auto h-[320px] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-field-navy sm:mx-0">
               {founderPhotoExists ? (
                 <Image
                   src="/Founder.jpg"
                   alt={`${founder.name}, Founder of WAFI & CO.`}
-                  width={220}
-                  height={220}
+                  width={240}
+                  height={320}
                   className="h-full w-full object-cover"
                 />
               ) : (
