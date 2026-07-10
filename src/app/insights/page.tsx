@@ -26,8 +26,20 @@ const tagGradients = [
   "text-gradient-navy",
 ];
 
-export default async function InsightsPage() {
-  const insights = await getInsights();
+const PER_PAGE = 6;
+
+export default async function InsightsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  const allInsights = await getInsights();
+
+  const totalPages = Math.max(1, Math.ceil(allInsights.length / PER_PAGE));
+  const page = Math.min(Math.max(1, Number(pageParam) || 1), totalPages);
+  const insights = allInsights.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
   return (
     <>
       <section className="relative overflow-hidden bg-banner text-white">
@@ -46,20 +58,20 @@ export default async function InsightsPage() {
       </section>
 
       <section className="relative overflow-hidden bg-section-mixed py-20">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="grid gap-8 sm:grid-cols-2">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="flex flex-col gap-6">
             {insights.map((post, i) => (
-              <Reveal key={post.slug} delay={(i % 2) * 80}>
+              <Reveal key={post.slug} delay={(i % 6) * 60}>
                 <Link
                   href={`/insights/${post.slug}`}
-                  className="card-glass group block h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10"
+                  className="card-glass group block rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10 sm:p-8"
                 >
                   <span
                     className={`text-xs font-semibold uppercase tracking-wide ${tagGradients[i % tagGradients.length]}`}
                   >
                     {post.category}
                   </span>
-                  <h2 className="mt-3 font-serif text-xl text-navy transition-colors group-hover:text-saffron">
+                  <h2 className="mt-3 font-serif text-xl text-navy transition-colors group-hover:text-saffron sm:text-2xl">
                     {post.title}
                   </h2>
                   <p className="text-body mt-2 text-sm leading-relaxed text-navy/70">
@@ -87,6 +99,28 @@ export default async function InsightsPage() {
               </Reveal>
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <nav
+              aria-label="Insights pagination"
+              className="mt-12 flex items-center justify-center gap-2"
+            >
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <Link
+                  key={n}
+                  href={n === 1 ? "/insights" : `/insights?page=${n}`}
+                  aria-current={n === page ? "page" : undefined}
+                  className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors duration-300 ${
+                    n === page
+                      ? "bg-gradient-brand text-navy"
+                      : "text-navy/60 hover:bg-navy/5 hover:text-navy"
+                  }`}
+                >
+                  {n}
+                </Link>
+              ))}
+            </nav>
+          )}
         </div>
       </section>
 
