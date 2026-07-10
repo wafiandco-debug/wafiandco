@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getInsight, getInsights } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
+import MarkdownContent from "@/components/MarkdownContent";
 
 export const revalidate = 60;
 
@@ -124,13 +125,7 @@ export default async function InsightPage({
       <p className="text-body mt-8 text-lg text-navy/75">
         {post.excerpt}
       </p>
-      <div className="mt-6 space-y-4">
-        {post.content.split(/\n+/).filter(Boolean).map((paragraph, i) => (
-          <p key={i} className="text-body text-navy/70">
-            {paragraph}
-          </p>
-        ))}
-      </div>
+      <MarkdownContent content={post.content} />
       <p className="text-body mt-6 text-navy/70">
         For advice specific to your situation, please{" "}
         <Link href="/contact" className="text-saffron transition-colors hover:text-gold">
