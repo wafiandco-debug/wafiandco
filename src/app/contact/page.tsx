@@ -87,6 +87,27 @@ export default function ContactPage() {
                     </svg>
                   </a>
                   <a
+                    href={siteConfig.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="inline-block transition-all duration-300 hover:scale-110 hover:text-saffron"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" strokeWidth="1.8" />
+                      <circle cx="7.5" cy="7.5" r="1.1" fill="currentColor" />
+                      <path d="M7.5 10.5v6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                      <path
+                        d="M11.5 16.5v-3.5c0-1.5 1-2.5 2.3-2.5s2.2 1 2.2 2.5v3.5"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path d="M11.5 10.5v6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                    </svg>
+                  </a>
+                  <a
                     href={siteConfig.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"

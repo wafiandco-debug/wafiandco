@@ -18,6 +18,7 @@ export const siteConfig = {
     googleProfile: "https://share.google/VzTK3Ffd51uRMbedq",
     facebook: "",
     whatsapp: "https://wa.me/919048869699",
+    linkedin: "https://www.linkedin.com/company/wafi-co-chartered-accountants/",
   },
 };
 
