@@ -104,14 +104,14 @@ export default async function InsightPage({
         })}
       </time>
       {post.author_name && (
-        <div className="mt-4 flex items-center gap-3">
+        <div className="mt-4 flex items-center gap-4">
           {post.author_photo_url && (
             <Image
               src={post.author_photo_url}
               alt={post.author_name}
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-full object-cover"
+              width={96}
+              height={128}
+              className="h-32 w-24 shrink-0 rounded-xl object-cover"
             />
           )}
           <div>
