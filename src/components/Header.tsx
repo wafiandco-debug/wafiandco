@@ -21,7 +21,7 @@ export default function Header() {
             width={532}
             height={130}
             priority
-            className="h-[100px] w-auto"
+            className="h-[60px] w-auto sm:h-[100px]"
           />
         </Link>
 
@@ -83,11 +83,11 @@ export default function Header() {
       </div>
 
       <div
-        className={`md:hidden grid overflow-hidden border-navy/10 bg-white transition-[grid-template-rows,border-color] duration-300 ease-out ${
-          open ? "grid-rows-[1fr] border-t" : "grid-rows-[0fr] border-t-0"
+        className={`md:hidden overflow-hidden border-navy/10 bg-white transition-[max-height,border-color] duration-300 ease-out ${
+          open ? "max-h-[480px] border-t" : "max-h-0 border-t-0"
         }`}
       >
-        <nav className="min-h-0 flex flex-col gap-4 px-6 py-4">
+        <nav className="flex flex-col gap-4 px-6 py-4">
           {navLinks.map((link, i) => (
             <Link
               key={link.href}
