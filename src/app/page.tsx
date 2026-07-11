@@ -174,8 +174,9 @@ export default function Home() {
             Ready to put your finances in order?
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-white/75">
-            From audit and taxation to compliance, advisory, and corporate
-            services — we&apos;re here for whatever your business needs.
+            Our expertise spans audit, taxation, compliance, advisory, and
+            corporate services — delivering comprehensive support for your
+            business.
           </p>
           <Link
             href="/contact"
