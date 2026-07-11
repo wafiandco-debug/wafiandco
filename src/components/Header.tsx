@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-navy/10">
       <div className="h-[3px] bg-gradient-brand" />
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 sm:py-2">
         <Link href="/" className="flex items-center transition-transform duration-300 hover:scale-[1.03]" onClick={() => setOpen(false)}>
           <Image
             src="/wafi-logo.png"
@@ -21,7 +21,7 @@ export default function Header() {
             width={532}
             height={130}
             priority
-            className="h-[60px] w-auto sm:h-[100px]"
+            className="h-[60px] w-auto sm:h-[80px]"
           />
         </Link>
 
