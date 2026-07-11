@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import type { Insight } from "@/lib/insights";
 
 function slugify(value: string) {
@@ -13,7 +12,6 @@ function slugify(value: string) {
 }
 
 export default function InsightForm({ initial }: { initial?: Insight }) {
-  const router = useRouter();
   const isEdit = Boolean(initial);
 
   const [slug, setSlug] = useState(initial?.slug ?? "");
@@ -91,8 +89,7 @@ export default function InsightForm({ initial }: { initial?: Insight }) {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Failed to save article.");
 
-      router.push("/admin/insights");
-      router.refresh();
+      window.location.href = "/admin/insights";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save article.");
       setSubmitting(false);

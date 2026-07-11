@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -23,11 +21,9 @@ export default function AdminLoginPage() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Login failed.");
 
-      router.push("/admin/insights");
-      router.refresh();
+      window.location.href = "/admin/insights";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed.");
-    } finally {
       setSubmitting(false);
     }
   }
