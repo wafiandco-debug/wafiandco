@@ -45,6 +45,33 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  name: siteConfig.fullName,
+  alternateName: siteConfig.name,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/wafi-logo-text.png`,
+  image: `${siteConfig.url}/og-image.jpg`,
+  description: defaultDescription,
+  telephone: siteConfig.phoneHref.replace("tel:", ""),
+  email: siteConfig.publicEmail,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Floor II, R Square, Puthiyangadi",
+    addressLocality: "Calicut",
+    postalCode: "673021",
+    addressRegion: "Kerala",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    siteConfig.social.linkedin,
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
+    siteConfig.social.googleProfile,
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +84,10 @@ export default function RootLayout({
       className={`${inter.variable} ${lora.variable} ${quicksand.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`}
           strategy="afterInteractive"
