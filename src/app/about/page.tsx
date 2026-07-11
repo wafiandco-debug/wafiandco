@@ -60,14 +60,12 @@ const vmo = [
     title: "Objectives",
     accent: "text-gradient-gold",
     list: [
-      "Deliver professional services with precision, timeliness, and consistency.",
+      "Deliver services with precision, timeliness, and consistency.",
       "Provide strategic guidance that goes beyond statutory compliance.",
-      "Build lasting partnerships through trust, accountability, and transparent communication.",
-      "Integrate legal, financial, tax, and corporate expertise to provide comprehensive business solutions.",
-      "Embrace technology to enhance efficiency, accuracy, and client experience.",
+      "Build lasting partnerships through trust and transparency.",
+      "Integrate legal, financial, tax, and corporate expertise into unified solutions.",
       "Uphold the highest standards of ethics, independence, and confidentiality.",
-      "Continuously strengthen our expertise through learning, innovation, and industry awareness.",
-      "Create long-term value by helping clients adapt, grow, and succeed in an evolving business environment.",
+      "Embrace technology and continuous learning to help clients grow and adapt.",
     ],
   },
 ];
@@ -198,29 +196,19 @@ export default function AboutPage() {
               </p>
               <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
                 That belief defines the way CA Wafi Muhsin A. approaches every
-                client engagement.
-              </p>
-              <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
-                As the Founder of {siteConfig.name}, he has built a firm
-                that combines technical expertise with practical business
-                thinking, helping entrepreneurs and organisations navigate
-                taxation, audit, compliance, and strategic decisions with
-                clarity and confidence.
-              </p>
-              <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
-                Rather than viewing compliance as the destination, he sees it
-                as the foundation for stronger governance, informed
-                decision-making, and sustainable growth. Every engagement is
-                approached with the objective of delivering solutions that are
-                practical, commercially relevant, and aligned with each
-                client&apos;s long-term vision.
+                client engagement as Founder of {siteConfig.name} — combining
+                technical expertise with practical business thinking to help
+                clients navigate taxation, audit, compliance, and strategic
+                decisions with clarity and confidence. He treats compliance
+                not as the destination, but as the foundation for stronger
+                governance and sustainable growth.
               </p>
               <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
                 An Associate Member of the Institute of Chartered Accountants
                 of India (ICAI) and an active member of the Kozhikode Branch,
-                CA Wafi is also a Costing subject expert and educator, driven
-                by a passion for simplifying complex financial concepts and
-                contributing to the development of future professionals.
+                CA Wafi is also a Costing subject expert and educator,
+                passionate about simplifying complex financial concepts for
+                the next generation of professionals.
               </p>
               <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
                 At {siteConfig.name}, numbers are not merely
