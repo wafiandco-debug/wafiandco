@@ -6,10 +6,25 @@ import Link from "next/link";
 import { founder, siteConfig } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 
+const description =
+  "Learn about WAFI & CO., Chartered Accountants, our founder, and our approach to audit, tax, and financial advisory.";
+
 export const metadata: Metadata = {
   title: "About Us | " + siteConfig.name,
-  description:
-    "Learn about WAFI & CO., Chartered Accountants, our founder, and our approach to audit, tax, and financial advisory.",
+  description,
+  openGraph: {
+    title: "About Us | " + siteConfig.name,
+    description,
+    url: `${siteConfig.url}/about`,
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | " + siteConfig.name,
+    description,
+    images: ["/og-image.jpg"],
+  },
 };
 
 const values = [

@@ -5,10 +5,25 @@ import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
 import FaqAccordion from "@/components/FaqAccordion";
 
+const description =
+  "Audit, Virtual CFO, GST, ITR, MCA Filings, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services from WAFI & CO., Chartered Accountants.";
+
 export const metadata: Metadata = {
   title: "Services | " + siteConfig.name,
-  description:
-    "Audit, Virtual CFO, GST, ITR, MCA Filings, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services from WAFI & CO., Chartered Accountants.",
+  description,
+  openGraph: {
+    title: "Services | " + siteConfig.name,
+    description,
+    url: `${siteConfig.url}/services`,
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | " + siteConfig.name,
+    description,
+    images: ["/og-image.jpg"],
+  },
 };
 
 const details: Record<string, string[]> = {

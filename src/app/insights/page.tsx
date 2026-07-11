@@ -15,6 +15,14 @@ export const metadata: Metadata = {
       "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
     url: `${siteConfig.url}/insights`,
     type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insights | " + siteConfig.name,
+    description:
+      "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
+    images: ["/og-image.jpg"],
   },
 };
 
