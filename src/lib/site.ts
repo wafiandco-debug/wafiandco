@@ -28,6 +28,7 @@ export const founder = {
   linkedin: "https://in.linkedin.com/in/ca-wafi-muhsin-a-864040202",
   instagram: "https://www.instagram.com/wafi_muhsin/",
   facebook: "https://www.facebook.com/wafi.muhsin/",
+  youtube: "https://youtube.com/@cawafimuhsin?si=xkI8HTjDIBul5hXr",
 };
 
 export const navLinks = [
