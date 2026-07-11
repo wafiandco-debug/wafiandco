@@ -194,19 +194,40 @@ export default function AboutPage() {
               <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-saffron">
                 {founder.credentials}
               </p>
-              <p className="text-body mt-4 text-sm leading-relaxed text-navy/70">
-                {founder.name} is the founder of {siteConfig.fullName} and a
-                Startup Advisor helping early-stage businesses build strong
-                financial foundations from day one. He is an active member of
-                the Kozhikode branch of the Institute of Chartered Accountants
-                of India (ICAI).
+              <p className="text-body mt-4 text-sm font-semibold italic leading-relaxed text-navy">
+                &ldquo;Professional advice should create direction, not just
+                documentation.&rdquo;
               </p>
               <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
-                He is a Costing Subject Expert, specialising in product
-                profitability, cost analysis, and cost planning. He also
-                creates educational content to make professional financial
-                concepts more accessible to students and early-career
-                professionals.
+                That belief defines the way CA Wafi Muhsin A. approaches every
+                client engagement.
+              </p>
+              <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
+                As the Founder of {siteConfig.name}, he has built a firm
+                that combines technical expertise with practical business
+                thinking, helping entrepreneurs and organisations navigate
+                taxation, audit, compliance, and strategic decisions with
+                clarity and confidence.
+              </p>
+              <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
+                Rather than viewing compliance as the destination, he sees it
+                as the foundation for stronger governance, informed
+                decision-making, and sustainable growth. Every engagement is
+                approached with the objective of delivering solutions that are
+                practical, commercially relevant, and aligned with each
+                client&apos;s long-term vision.
+              </p>
+              <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
+                An Associate Member of the Institute of Chartered Accountants
+                of India (ICAI) and an active member of the Kozhikode Branch,
+                CA Wafi is also a Costing subject expert and educator, driven
+                by a passion for simplifying complex financial concepts and
+                contributing to the development of future professionals.
+              </p>
+              <p className="text-body mt-3 text-sm leading-relaxed text-navy/70">
+                At {siteConfig.name}, numbers are not merely
+                reported—they are interpreted, strategies are refined, and
+                businesses are empowered to move forward with confidence.
               </p>
               <div className="mt-5 flex gap-4">
                 <a
