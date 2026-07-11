@@ -49,22 +49,25 @@ const vmo = [
   {
     title: "Vision",
     accent: "text-gradient-navy",
-    body: "To be the most trusted Chartered Accountancy firm in the region — recognised for integrity, precision, and financial guidance that helps every client grow with confidence.",
+    body: "To redefine professional advisory services by becoming the preferred multidisciplinary firm for businesses seeking clarity, confidence, and sustainable growth.",
   },
   {
     title: "Mission",
     accent: "text-gradient-saffron",
-    body: "To deliver accurate, timely, and practical audit, tax, and advisory services that keep our clients fully compliant while giving them the clarity to make sound business decisions.",
+    body: "We are committed to providing integrated professional solutions that combine technical precision with practical business understanding. Through proactive advisory, regulatory excellence, and technology-enabled service delivery, we help clients navigate complexity, ensure compliance, mitigate risk, and unlock sustainable growth opportunities.",
   },
   {
     title: "Objectives",
     accent: "text-gradient-gold",
     list: [
-      "Deliver accurate, on-time compliance across audit, tax, GST, and regulatory filings",
-      "Provide proactive, business-first advisory rather than reactive service",
-      "Build long-term client relationships grounded in transparency and trust",
-      "Stay current with evolving tax, GST, and regulatory frameworks",
-      "Support client growth through sound financial planning and structuring",
+      "Deliver professional services with precision, timeliness, and consistency.",
+      "Provide strategic guidance that goes beyond statutory compliance.",
+      "Build lasting partnerships through trust, accountability, and transparent communication.",
+      "Integrate legal, financial, tax, and corporate expertise to provide comprehensive business solutions.",
+      "Embrace technology to enhance efficiency, accuracy, and client experience.",
+      "Uphold the highest standards of ethics, independence, and confidentiality.",
+      "Continuously strengthen our expertise through learning, innovation, and industry awareness.",
+      "Create long-term value by helping clients adapt, grow, and succeed in an evolving business environment.",
     ],
   },
 ];
@@ -127,12 +130,7 @@ export default function AboutPage() {
 
       <section className="relative overflow-hidden bg-section-mixed py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <Reveal>
-            <h2 className="text-center font-serif text-2xl text-navy">
-              Vision, Mission &amp; Objectives
-            </h2>
-          </Reveal>
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-3">
             {vmo.map((item, i) => (
               <Reveal key={item.title} delay={i * 100}>
                 <div className="card-glass h-full rounded-2xl p-6">
