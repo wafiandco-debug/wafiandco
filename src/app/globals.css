@@ -254,19 +254,19 @@ body {
 }
 
 .animate-in {
-  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .animate-in-delay-1 {
-  animation-delay: 0.12s;
+  animation-delay: 0.06s;
 }
 
 .animate-in-delay-2 {
-  animation-delay: 0.24s;
+  animation-delay: 0.12s;
 }
 
 .animate-in-delay-3 {
-  animation-delay: 0.36s;
+  animation-delay: 0.18s;
 }
 
 /* Accordion expand transition */
