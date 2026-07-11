@@ -61,10 +61,10 @@ export default function Home() {
               Talk to us
             </Link>
             <Link
-              href="/services"
+              href="/about"
               className="rounded-full border border-white/30 px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10 hover:-translate-y-0.5"
             >
-              Explore services
+              Discover →
             </Link>
           </div>
         </div>
