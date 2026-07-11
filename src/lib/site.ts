@@ -20,6 +20,7 @@ export const siteConfig = {
     whatsapp: "https://wa.me/919048869699",
     linkedin: "https://www.linkedin.com/company/wafi-co-chartered-accountants/",
   },
+  googleAnalyticsId: "G-DXWSYYBJLZ",
 };
 
 export const founder = {
