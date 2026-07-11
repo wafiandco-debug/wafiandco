@@ -174,14 +174,14 @@ export default function Home() {
             Ready to put your finances in order?
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-white/75">
-            Get in touch for a conversation about audit, tax, or
-            accounting support tailored to your business.
+            From audit and taxation to compliance, advisory, and corporate
+            services — we&apos;re here for whatever your business needs.
           </p>
           <Link
             href="/contact"
             className="relative mt-8 inline-block rounded-full bg-gradient-brand bg-[length:200%_200%] bg-left px-8 py-3 text-sm font-semibold text-navy shadow-md transition-[background-position,transform] duration-300 hover:bg-right hover:-translate-y-0.5"
           >
-            Get in Touch
+            Connect
           </Link>
         </div>
       </section>
