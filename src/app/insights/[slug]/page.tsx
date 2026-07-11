@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getInsight, getInsights } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 import MarkdownContent from "@/components/MarkdownContent";
+import ShareButtons from "@/components/ShareButtons";
 
 export const revalidate = 60;
 
@@ -134,6 +135,7 @@ export default async function InsightPage({
         </Link>
         .
       </p>
+      <ShareButtons url={url} title={post.title} />
     </article>
   );
 }
