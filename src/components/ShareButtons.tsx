@@ -1,3 +1,5 @@
+"use client";
+
 const shareTargets = (url: string, title: string) => [
   {
     label: "WhatsApp",
@@ -25,7 +27,19 @@ const shareTargets = (url: string, title: string) => [
   },
 ];
 
-export default function ShareButtons({ url, title }: { url: string; title: string }) {
+export default function ShareButtons({
+  url,
+  title,
+  slug,
+}: {
+  url: string;
+  title: string;
+  slug: string;
+}) {
+  function trackShare() {
+    fetch(`/api/insights/${slug}/share`, { method: "POST" }).catch(() => {});
+  }
+
   return (
     <div className="mt-10 flex items-center gap-4 border-t border-navy/10 pt-6">
       <span className="text-xs font-semibold uppercase tracking-wide text-navy/50">
@@ -41,6 +55,7 @@ export default function ShareButtons({ url, title }: { url: string; title: strin
             aria-label={`Share on ${target.label}`}
             style={{ color: target.color }}
             className="inline-flex items-center justify-center rounded-full border border-navy/15 p-2 transition-all duration-300 hover:scale-110 hover:border-current"
+            onClick={trackShare}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               {target.icon}

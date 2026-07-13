@@ -10,6 +10,8 @@ export type Insight = {
   author_name?: string | null;
   author_position?: string | null;
   author_photo_url?: string | null;
+  view_count?: number | null;
+  share_count?: number | null;
 };
 
 // Used until the Supabase "insights" table is configured (see SETUP.md),

@@ -6,6 +6,7 @@ import { getInsight, getInsights } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 import MarkdownContent from "@/components/MarkdownContent";
 import ShareButtons from "@/components/ShareButtons";
+import ViewCounter from "@/components/ViewCounter";
 
 export const revalidate = 60;
 
@@ -98,13 +99,36 @@ export default async function InsightPage({
         {post.title}
       </h1>
       <div className="mt-4 h-1 w-16 rounded-full bg-gradient-brand" />
-      <time className="mt-4 block text-sm text-navy/50">
-        {new Date(post.date).toLocaleDateString("en-IN", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </time>
+      <ViewCounter slug={post.slug} />
+      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-navy/50">
+        <time>
+          {new Date(post.date).toLocaleDateString("en-IN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </time>
+        <span className="inline-flex items-center gap-1.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12Z"
+              stroke="currentColor"
+              strokeWidth="1.8"
+            />
+            <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.8" />
+          </svg>
+          {post.view_count ?? 0} views
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <circle cx="6" cy="12" r="2.4" stroke="currentColor" strokeWidth="1.8" />
+            <circle cx="17.5" cy="6" r="2.4" stroke="currentColor" strokeWidth="1.8" />
+            <circle cx="17.5" cy="18" r="2.4" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M8.1 10.8 15.4 7M8.1 13.2l7.3 3.8" stroke="currentColor" strokeWidth="1.8" />
+          </svg>
+          {post.share_count ?? 0} shares
+        </span>
+      </div>
       {post.author_name && (
         <div className="mt-4 flex items-center gap-4">
           {post.author_photo_url && (
@@ -135,7 +159,7 @@ export default async function InsightPage({
         </Link>
         .
       </p>
-      <ShareButtons url={url} title={post.title} />
+      <ShareButtons url={url} title={post.title} slug={post.slug} />
     </article>
   );
 }
