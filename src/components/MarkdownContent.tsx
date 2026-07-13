@@ -133,6 +133,58 @@ export default function MarkdownContent({ content }: { content: string }) {
       continue;
     }
 
+    if (
+      line.startsWith("|") &&
+      lines[i + 1] &&
+      /^\|?[\s:|-]+\|?$/.test(lines[i + 1].trim())
+    ) {
+      const parseRow = (row: string) =>
+        row
+          .trim()
+          .replace(/^\|/, "")
+          .replace(/\|$/, "")
+          .split("|")
+          .map((cell) => cell.trim());
+
+      const headerCells = parseRow(line);
+      i += 2;
+      const rows: string[][] = [];
+      while (i < lines.length && lines[i].trim().startsWith("|")) {
+        rows.push(parseRow(lines[i]));
+        i++;
+      }
+      blocks.push(
+        <div key={keys.next()} className="mt-6 overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="border-b-2 border-navy/20">
+                {headerCells.map((cell) => (
+                  <th
+                    key={keys.next()}
+                    className="px-3 py-2 text-left font-semibold text-navy"
+                  >
+                    {renderInline(cell, keys)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={keys.next()} className="border-b border-navy/10">
+                  {row.map((cell) => (
+                    <td key={keys.next()} className="px-3 py-2 text-navy/70">
+                      {renderInline(cell, keys)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+      continue;
+    }
+
     const paraLines = [line];
     i++;
     while (
