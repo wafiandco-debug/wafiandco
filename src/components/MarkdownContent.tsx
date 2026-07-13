@@ -63,7 +63,7 @@ export default function MarkdownContent({ content }: { content: string }) {
 
     if (line.startsWith("### ")) {
       blocks.push(
-        <h3 key={keys.next()} className="mt-6 font-serif text-lg text-navy">
+        <h3 key={keys.next()} className="mt-6 text-left font-serif text-lg text-navy">
           {renderInline(line.slice(4), keys)}
         </h3>
       );
@@ -73,7 +73,7 @@ export default function MarkdownContent({ content }: { content: string }) {
 
     if (line.startsWith("## ")) {
       blocks.push(
-        <h2 key={keys.next()} className="mt-8 font-serif text-2xl text-navy">
+        <h2 key={keys.next()} className="mt-8 text-left font-serif text-2xl text-navy">
           {renderInline(line.slice(3), keys)}
         </h2>
       );
@@ -90,7 +90,7 @@ export default function MarkdownContent({ content }: { content: string }) {
     const boldOnlyMatch = /^\*\*(.+)\*\*$/.exec(line);
     if (boldOnlyMatch) {
       blocks.push(
-        <p key={keys.next()} className="mt-6 font-semibold text-navy">
+        <p key={keys.next()} className="mt-6 text-left font-semibold text-navy">
           {renderInline(boldOnlyMatch[1], keys)}
         </p>
       );
