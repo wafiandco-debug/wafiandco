@@ -71,6 +71,14 @@ const organizationJsonLd = {
     { "@type": "State", name: "Kerala" },
   ],
   priceRange: "$$",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:30",
+      closes: "16:30",
+    },
+  ],
   sameAs: [
     siteConfig.social.linkedin,
     siteConfig.social.facebook,
