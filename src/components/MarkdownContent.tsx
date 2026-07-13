@@ -172,7 +172,7 @@ export default function MarkdownContent({ content }: { content: string }) {
               {rows.map((row) => (
                 <tr key={keys.next()} className="border-b border-navy/10">
                   {row.map((cell) => (
-                    <td key={keys.next()} className="px-3 py-2 text-navy/70">
+                    <td key={keys.next()} className="px-3 py-2 text-left text-navy/70">
                       {renderInline(cell, keys)}
                     </td>
                   ))}
