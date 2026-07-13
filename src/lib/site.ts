@@ -12,7 +12,7 @@ export const siteConfig = {
   email: "wafiandco@gmail.com",
   // Publicly displayed contact email (Footer, Contact page).
   publicEmail: "info@wafiandco.com",
-  address: "Floor II, R Square, Puthiyangadi, Calicut - 673021",
+  address: "II Floor, R Square, Kannur Rd, Puthiyangadi, Kozhikode, Kerala 673021",
   social: {
     instagram: "https://www.instagram.com/wafiandco_ca/",
     googleProfile: "https://share.google/VzTK3Ffd51uRMbedq",

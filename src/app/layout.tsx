@@ -59,12 +59,18 @@ const organizationJsonLd = {
   email: siteConfig.publicEmail,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Floor II, R Square, Puthiyangadi",
-    addressLocality: "Calicut",
+    streetAddress: "II Floor, R Square, Kannur Rd, Puthiyangadi",
+    addressLocality: "Kozhikode",
     postalCode: "673021",
     addressRegion: "Kerala",
     addressCountry: "IN",
   },
+  areaServed: [
+    { "@type": "City", name: "Calicut" },
+    { "@type": "City", name: "Kozhikode" },
+    { "@type": "State", name: "Kerala" },
+  ],
+  priceRange: "$$",
   sameAs: [
     siteConfig.social.linkedin,
     siteConfig.social.facebook,
