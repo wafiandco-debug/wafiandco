@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import sharp from "sharp";
 import { supabaseAdmin } from "@/lib/supabase";
 
 const MAX_PHOTO_SIZE = 2 * 1024 * 1024;
@@ -25,13 +26,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Photo is too large (max 2MB)." }, { status: 400 });
   }
 
-  const ext = file.name.split(".").pop() || "jpg";
-  const path = `${crypto.randomUUID()}.${ext}`;
-  const buffer = Buffer.from(await file.arrayBuffer());
+  const path = `${crypto.randomUUID()}.jpg`;
+  const rawBuffer = Buffer.from(await file.arrayBuffer());
+
+  // Downscale and re-encode so the same file works as both the small
+  // byline thumbnail and a social-share preview image — an unprocessed
+  // phone photo (multi-MB, portrait) fails to render in WhatsApp/LinkedIn
+  // link previews.
+  const buffer = await sharp(rawBuffer)
+    .rotate()
+    .resize({ width: 1000, height: 1000, fit: "inside", withoutEnlargement: true })
+    .jpeg({ quality: 85 })
+    .toBuffer();
 
   const { error: uploadError } = await supabaseAdmin.storage
     .from("author-photos")
-    .upload(path, buffer, { contentType: file.type, upsert: false });
+    .upload(path, buffer, { contentType: "image/jpeg", upsert: false });
 
   if (uploadError) {
     return NextResponse.json({ error: uploadError.message }, { status: 500 });
