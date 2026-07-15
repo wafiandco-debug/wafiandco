@@ -3,6 +3,8 @@ import InsightForm from "@/components/admin/InsightForm";
 import { supabaseAdmin } from "@/lib/supabase";
 import type { Insight } from "@/lib/insights";
 
+export const dynamic = "force-dynamic";
+
 export default async function EditInsightPage({
   params,
 }: {

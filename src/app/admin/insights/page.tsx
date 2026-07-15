@@ -3,6 +3,8 @@ import { supabaseAdmin } from "@/lib/supabase";
 import DeleteInsightButton from "@/components/admin/DeleteInsightButton";
 import type { Insight } from "@/lib/insights";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminInsightsPage() {
   if (!supabaseAdmin) {
     return (
