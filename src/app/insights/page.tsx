@@ -34,7 +34,7 @@ const tagGradients = [
   "text-gradient-navy",
 ];
 
-const PER_PAGE = 6;
+const PER_PAGE = 5;
 
 export default async function InsightsPage({
   searchParams,
