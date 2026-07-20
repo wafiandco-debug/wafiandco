@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ImageProtection from "@/components/ImageProtection";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, navLinks } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -88,6 +88,23 @@ const organizationJsonLd = {
   ],
 };
 
+// Hints Google's crawler toward the site's top-level page structure — one
+// input (among many, and not a guarantee) into whether it ever generates
+// Sitelinks under the search result. That decision is otherwise entirely
+// algorithmic and tied to accumulated site authority.
+const siteNavigationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [...navLinks, { label: "Contact", href: "/contact" }].map(
+    (link, i) => ({
+      "@type": "SiteNavigationElement",
+      position: i + 1,
+      name: link.label,
+      url: `${siteConfig.url}${link.href === "/" ? "" : link.href}`,
+    })
+  ),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -103,6 +120,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationJsonLd) }}
         />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`}
