@@ -300,3 +300,12 @@ body {
     background-attachment: scroll;
   }
 }
+
+/* Extra layer against casual image saving, alongside ImageProtection.tsx's
+   right-click/drag handlers — blocks iOS long-press "Save Image" and makes
+   images non-draggable/non-selectable outright. */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}

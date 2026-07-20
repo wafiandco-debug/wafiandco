@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ImageProtection from "@/components/ImageProtection";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -120,6 +121,7 @@ export default function RootLayout({
         <Footer />
         <ScrollToTop />
         <WhatsAppButton />
+        <ImageProtection />
       </body>
     </html>
   );
