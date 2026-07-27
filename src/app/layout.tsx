@@ -66,6 +66,11 @@ const organizationJsonLd = {
     addressRegion: "Kerala",
     addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 11.303375150623369,
+    longitude: 75.76037662699072,
+  },
   areaServed: [
     { "@type": "City", name: "Calicut" },
     { "@type": "City", name: "Kozhikode" },
