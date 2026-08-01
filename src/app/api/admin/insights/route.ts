@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { sanitizeArticleHtml } from "@/lib/sanitizeArticleHtml";
 
 export async function GET() {
   if (!supabaseAdmin) {
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
     title,
     category,
     excerpt,
-    content,
+    content: sanitizeArticleHtml(content),
     date,
     author_name: author_name || null,
     author_position: author_position || null,

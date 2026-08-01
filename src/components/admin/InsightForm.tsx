@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { Insight } from "@/lib/insights";
+import RichTextEditor from "./RichTextEditor";
 
 function slugify(value: string) {
   return value
@@ -46,8 +47,18 @@ export default function InsightForm({ initial }: { initial?: Insight }) {
     setExistingPhotoUrl("");
   }
 
+  function isContentEmpty(html: string) {
+    return !html.replace(/<[^>]+>/g, "").trim();
+  }
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (isContentEmpty(content)) {
+      setError("Article content can't be empty.");
+      return;
+    }
+
     setSubmitting(true);
     setError("");
 
@@ -157,14 +168,13 @@ export default function InsightForm({ initial }: { initial?: Insight }) {
         </div>
         <div>
           <label className="text-sm font-medium text-navy">Article content</label>
-          <textarea
-            required
-            rows={10}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Full article text. Leave a blank line between paragraphs."
-            className="mt-1.5 w-full rounded-lg border border-navy/20 px-4 py-2.5 text-navy outline-none placeholder:text-navy/35 focus:border-saffron focus:ring-2 focus:ring-saffron/20"
-          />
+          <p className="mt-1 text-xs text-navy/50">
+            You can paste directly from a Word document — tables, lists, bold text, and
+            alignment carry over.
+          </p>
+          <div className="mt-1.5">
+            <RichTextEditor value={content} onChange={setContent} />
+          </div>
         </div>
 
         <div className="rounded-xl border border-navy/10 bg-navy/[0.03] p-5">

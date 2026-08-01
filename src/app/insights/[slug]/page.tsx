@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getInsight, getInsights } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
-import MarkdownContent from "@/components/MarkdownContent";
+import ArticleContent from "@/components/ArticleContent";
 import ShareButtons from "@/components/ShareButtons";
 import ViewCounter from "@/components/ViewCounter";
 
@@ -151,7 +151,7 @@ export default async function InsightPage({
       <p className="text-body-justify mt-8 text-lg text-navy/75">
         {post.excerpt}
       </p>
-      <MarkdownContent content={post.content} />
+      <ArticleContent html={post.content} />
       <p className="text-body-justify mt-6 text-navy/70">
         For advice specific to your situation, please{" "}
         <Link href="/contact" className="text-saffron transition-colors hover:text-gold">

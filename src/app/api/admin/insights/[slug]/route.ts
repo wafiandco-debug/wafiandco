@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { sanitizeArticleHtml } from "@/lib/sanitizeArticleHtml";
 
 export async function PUT(
   req: Request,
@@ -32,7 +33,7 @@ export async function PUT(
       title,
       category,
       excerpt,
-      content,
+      content: sanitizeArticleHtml(content),
       date,
       author_name: author_name || null,
       author_position: author_position || null,
