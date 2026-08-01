@@ -16,9 +16,12 @@ import { FontSize } from "./FontSizeExtension";
 
 const FONT_FAMILIES = [
   { label: "Default", value: "" },
-  { label: "Serif", value: "Georgia, serif" },
-  { label: "Sans-serif", value: "Arial, Helvetica, sans-serif" },
-  { label: "Monospace", value: "'Courier New', monospace" },
+  { label: "Roboto", value: "var(--font-roboto), sans-serif" },
+  { label: "Open Sans", value: "var(--font-open-sans), sans-serif" },
+  { label: "Montserrat", value: "var(--font-montserrat), sans-serif" },
+  { label: "Merriweather", value: "var(--font-merriweather), serif" },
+  { label: "Playfair Display", value: "var(--font-playfair-display), serif" },
+  { label: "Roboto Mono", value: "var(--font-roboto-mono), monospace" },
 ];
 
 const FONT_SIZES = [

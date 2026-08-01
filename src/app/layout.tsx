@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Lora, Quicksand } from "next/font/google";
+import {
+  Inter,
+  Lora,
+  Quicksand,
+  Roboto,
+  Open_Sans,
+  Merriweather,
+  Playfair_Display,
+  Montserrat,
+  Roboto_Mono,
+} from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -21,6 +31,42 @@ const lora = Lora({
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
+  subsets: ["latin"],
+});
+
+// Extra web fonts made available in the Insights rich-text editor's font
+// picker — loaded as real webfonts (not OS-dependent names like "Arial")
+// so they render identically for every visitor regardless of what's
+// installed on their device.
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin"],
+});
+
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
   subsets: ["latin"],
 });
 
@@ -119,7 +165,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${lora.variable} ${quicksand.variable} h-full antialiased`}
+      className={`${inter.variable} ${lora.variable} ${quicksand.variable} ${roboto.variable} ${openSans.variable} ${merriweather.variable} ${playfairDisplay.variable} ${montserrat.variable} ${robotoMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

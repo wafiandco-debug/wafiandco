@@ -40,7 +40,7 @@ export function sanitizeArticleHtml(html: string): string {
     allowedStyles: {
       "*": {
         color: [/^#[0-9a-fA-F]{3,8}$/, /^rgb\(/],
-        "font-family": [/^[\w\s,'"-]+$/],
+        "font-family": [/^[\w\s,'"()-]+$/],
         "font-size": [/^\d+(\.\d+)?(px|em|rem)$/],
         "text-align": [/^(left|center|right|justify)$/],
       },
