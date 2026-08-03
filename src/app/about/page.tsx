@@ -49,7 +49,7 @@ const vmo = [
   {
     title: "Vision",
     accent: "text-gradient-navy",
-    body: "To redefine professional advisory services by becoming the preferred multidisciplinary firm for businesses seeking clarity, confidence, and sustainable growth.",
+    body: "To redefine professional advisory services through a multidisciplinary approach that gives businesses clarity, confidence, and sustainable growth.",
   },
   {
     title: "Mission",
