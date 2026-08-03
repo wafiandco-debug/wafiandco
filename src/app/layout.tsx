@@ -77,6 +77,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: "WAFI & CO. | Chartered Accountants",
   description: defaultDescription,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "WAFI & CO. | Chartered Accountants",
     description: defaultDescription,
