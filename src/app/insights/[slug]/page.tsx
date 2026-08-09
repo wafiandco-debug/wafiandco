@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/site";
 import ArticleContent from "@/components/ArticleContent";
 import ShareButtons from "@/components/ShareButtons";
 import ViewCounter from "@/components/ViewCounter";
+import RelatedArticles from "@/components/RelatedArticles";
 
 export const revalidate = 60;
 
@@ -160,6 +161,7 @@ export default async function InsightPage({
         .
       </p>
       <ShareButtons url={url} title={post.title} slug={post.slug} />
+      <RelatedArticles current={post} />
     </article>
   );
 }
