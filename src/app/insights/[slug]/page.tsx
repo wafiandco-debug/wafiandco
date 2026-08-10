@@ -93,7 +93,7 @@ export default async function InsightPage({
       <Link href="/insights" className="text-sm font-medium text-saffron transition-colors hover:text-gold">
         ← Back to Insights
       </Link>
-      <span className="mt-6 block text-xs font-semibold uppercase tracking-wide text-gradient-brand">
+      <span className="mt-6 block text-xs font-semibold uppercase tracking-wide text-gradient-saffron">
         {post.category}
       </span>
       <h1 className="mt-3 font-serif text-3xl text-navy sm:text-4xl">
