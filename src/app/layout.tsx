@@ -71,7 +71,7 @@ const robotoMono = Roboto_Mono({
 });
 
 const defaultDescription =
-  "WAFI & CO., Chartered Accountants — Audit, Virtual CFO, GST, ITR, MCA Filings, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services in Calicut, Kerala.";
+  "WAFI & CO., Chartered Accountants — Audit, Virtual CFO, GST, ITR, Incorporation, Certifications, Advisory, and Accounting Services in Calicut, Kerala.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

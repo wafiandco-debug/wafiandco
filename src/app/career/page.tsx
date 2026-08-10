@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 
 const description =
-  "Join WAFI & CO., Chartered Accountants. Explore career opportunities and apply.";
+  "Explore career opportunities and articleship openings at WAFI & CO., Chartered Accountants in Calicut, Kerala, and apply to join our audit and tax team.";
 
 export const metadata: Metadata = {
   title: "Careers | " + siteConfig.name,

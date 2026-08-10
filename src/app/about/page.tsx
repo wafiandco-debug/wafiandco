@@ -7,7 +7,7 @@ import { founder, siteConfig } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 
 const description =
-  "Learn about WAFI & CO., Chartered Accountants, our founder, and our approach to audit, tax, and financial advisory.";
+  "Learn about WAFI & CO., Chartered Accountants in Calicut, Kerala — our founder, our approach to audit, tax, and advisory, and the values that guide us.";
 
 export const metadata: Metadata = {
   title: "About Us | " + siteConfig.name,

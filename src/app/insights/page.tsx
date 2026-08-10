@@ -7,12 +7,12 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Insights | " + siteConfig.name,
   description:
-    "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
+    "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
   alternates: { canonical: `${siteConfig.url}/insights` },
   openGraph: {
     title: "Insights | " + siteConfig.name,
     description:
-      "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
+      "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
     url: `${siteConfig.url}/insights`,
     type: "website",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Insights | " + siteConfig.name,
     description:
-      "Articles and updates on audit, tax, GST, and accounting from WAFI & CO., Chartered Accountants.",
+      "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
     images: ["/og-image.jpg"],
   },
 };

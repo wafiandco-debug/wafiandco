@@ -6,7 +6,7 @@ import ServiceIcon from "@/components/ServiceIcon";
 import FaqAccordion from "@/components/FaqAccordion";
 
 const description =
-  "Audit, Virtual CFO, GST, ITR, MCA Filings, Incorporation, Certifications, Advisory, Corporate Restructuring, BPR and Accounting Services from WAFI & CO., Chartered Accountants.";
+  "Audit, Virtual CFO, GST, ITR, MCA Filings, Incorporation, Certifications, and Accounting Services from WAFI & CO., Chartered Accountants in Calicut, Kerala.";
 
 export const metadata: Metadata = {
   title: "Services | " + siteConfig.name,

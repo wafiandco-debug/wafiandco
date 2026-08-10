@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 
 const description =
-  "Get in touch with WAFI & CO., Chartered Accountants, in Calicut, Kerala.";
+  "Get in touch with WAFI & CO., Chartered Accountants in Calicut, Kerala, for audit, tax, GST, and business advisory support. Call, email, or send us a message.";
 
 export const metadata: Metadata = {
   title: "Contact | " + siteConfig.name,
