@@ -1,7 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { ADMIN_COOKIE, getExpectedAdminToken } from "@/lib/adminAuth";
 
-const PUBLIC_ADMIN_PATHS = ["/admin/login", "/api/admin/login"];
+const PUBLIC_ADMIN_PATHS = [
+  "/admin/login",
+  "/api/admin/login",
+  "/api/admin/forgot-password",
+];
 
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;

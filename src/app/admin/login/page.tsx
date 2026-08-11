@@ -6,6 +6,8 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [forgotState, setForgotState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [forgotMessage, setForgotMessage] = useState("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,6 +27,21 @@ export default function AdminLoginPage() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed.");
       setSubmitting(false);
+    }
+  }
+
+  async function handleForgotPassword() {
+    setForgotState("sending");
+    setForgotMessage("");
+    try {
+      const res = await fetch("/api/admin/forgot-password", { method: "POST" });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Failed to send recovery email.");
+      setForgotState("sent");
+      setForgotMessage("Password sent to the registered email.");
+    } catch (err) {
+      setForgotState("error");
+      setForgotMessage(err instanceof Error ? err.message : "Failed to send recovery email.");
     }
   }
 
@@ -51,6 +68,25 @@ export default function AdminLoginPage() {
           />
         </div>
         {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+        <div className="mt-3 text-right">
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            disabled={forgotState === "sending"}
+            className="text-xs font-medium text-navy/60 underline-offset-2 hover:text-saffron hover:underline disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {forgotState === "sending" ? "Sending…" : "Forgot password?"}
+          </button>
+        </div>
+        {forgotMessage && (
+          <p
+            className={`mt-2 text-sm ${
+              forgotState === "error" ? "text-red-600" : "text-emerald-600"
+            }`}
+          >
+            {forgotMessage}
+          </p>
+        )}
         <button
           type="submit"
           disabled={submitting}

@@ -1,15 +1,10 @@
 import { NextResponse } from "next/server";
 import { ADMIN_COOKIE, getExpectedAdminToken, tokenFromPassword } from "@/lib/adminAuth";
 import { supabaseAdmin } from "@/lib/supabase";
+import { getClientIp } from "@/lib/requestIp";
 
 const MAX_ATTEMPTS = 5;
 const LOCK_DURATION_MS = 5 * 60 * 60 * 1000;
-
-function getClientIp(req: Request): string {
-  const forwarded = req.headers.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0].trim();
-  return req.headers.get("x-real-ip") ?? "unknown";
-}
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => null);
