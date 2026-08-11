@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { getClientIp } from "@/lib/requestIp";
 
 const COOLDOWN_MS = 15 * 60 * 1000;
-const RECOVERY_EMAIL = "wafimuhsin.a@gmail.com";
+const RECOVERY_EMAILS = ["wafimuhsin.a@gmail.com", "wafitkd@gmail.com"];
 
 export async function POST(req: Request) {
   const ip = getClientIp(req);
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
   try {
     await transporter.sendMail({
       from: `"WAFI & CO. Website" <${process.env.GMAIL_USER}>`,
-      to: RECOVERY_EMAIL,
+      to: RECOVERY_EMAILS.join(", "),
       subject: "WAFI & CO. Admin Password Recovery",
       text: `Your admin login password is: ${password}\n\nThis was requested from IP: ${ip}. If you didn't request this, you can ignore it — no changes were made to your account.`,
     });
