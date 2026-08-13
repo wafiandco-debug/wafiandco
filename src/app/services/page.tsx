@@ -113,6 +113,11 @@ const cardGradients = ["bg-gradient-navy", "bg-gradient-saffron", "bg-gradient-g
 
 const faqs = [
   {
+    question: "Is WAFI & CO. a CA firm in Calicut?",
+    answer:
+      "Yes — WAFI & CO. is a Chartered Accountancy firm based in Calicut (Kozhikode), Kerala, offering audit, Virtual CFO, GST, ITR, incorporation, certification, and advisory services to businesses across the city.",
+  },
+  {
     question: "How do I get started with WAFI & CO.?",
     answer:
       "Reach out through the contact form, phone, or email with a brief note on what you need. We'll set up a conversation to understand your business and recommend the right mix of services.",
@@ -134,9 +139,26 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <section className="relative overflow-hidden bg-banner text-white">
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85" />
         <div className="gradient-blob absolute -top-20 -right-20 h-72 w-72 rounded-full bg-saffron/20" />
