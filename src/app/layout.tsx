@@ -77,6 +77,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: "WAFI & CO. | Chartered Accountants",
   description: defaultDescription,
+  alternates: {
+    types: {
+      "application/rss+xml": `${siteConfig.url}/feed.xml`,
+    },
+  },
   robots: {
     index: true,
     follow: true,

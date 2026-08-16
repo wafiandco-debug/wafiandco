@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "Insights | " + siteConfig.name,
   description:
     "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
-  alternates: { canonical: `${siteConfig.url}/insights` },
+  alternates: {
+    canonical: `${siteConfig.url}/insights`,
+    types: { "application/rss+xml": `${siteConfig.url}/feed.xml` },
+  },
   openGraph: {
     title: "Insights | " + siteConfig.name,
     description:

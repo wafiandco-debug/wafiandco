@@ -28,7 +28,10 @@ export async function generateMetadata({
   return {
     title: `${post.title} | ${siteConfig.name}`,
     description: post.excerpt,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: { "application/rss+xml": `${siteConfig.url}/feed.xml` },
+    },
     authors: post.author_name ? [{ name: post.author_name }] : undefined,
     openGraph: {
       title: post.title,
