@@ -16,7 +16,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ImageProtection from "@/components/ImageProtection";
-import { siteConfig, navLinks } from "@/lib/site";
+import { siteConfig, navLinks, services } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -139,6 +139,19 @@ const organizationJsonLd = {
     { "@type": "State", name: "Kerala" },
   ],
   priceRange: "$$",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Services",
+    itemListElement: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.summary,
+        url: `${siteConfig.url}/services#${service.slug}`,
+      },
+    })),
+  },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
