@@ -84,11 +84,25 @@ export default async function InsightPage({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Insights", item: `${siteConfig.url}/insights` },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
+  };
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Link href="/insights" className="text-sm font-medium text-saffron transition-colors hover:text-gold">
         ← Back to Insights

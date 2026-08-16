@@ -36,6 +36,15 @@ const tagGradients = [
 
 const PER_PAGE = 5;
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${siteConfig.url}/insights` },
+  ],
+};
+
 export default async function InsightsPage({
   searchParams,
 }: {
@@ -50,6 +59,10 @@ export default async function InsightsPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="relative overflow-hidden bg-banner text-white">
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85" />
         <div className="gradient-blob absolute -top-20 -right-16 h-72 w-72 rounded-full bg-gold/15" />

@@ -152,12 +152,25 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${siteConfig.url}/services` },
+  ],
+};
+
 export default function ServicesPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <section className="relative overflow-hidden bg-banner text-white">
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85" />
