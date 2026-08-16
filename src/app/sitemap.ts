@@ -16,7 +16,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
   ].map((path) => ({
     url: `${siteConfig.url}${path}`,
-    lastModified: new Date(),
   }));
 
   const insightRoutes: MetadataRoute.Sitemap = insights.map((post) => ({
