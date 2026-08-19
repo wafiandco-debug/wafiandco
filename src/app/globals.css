@@ -61,6 +61,7 @@ body {
 .site-bg-photo {
   position: fixed;
   inset: 0;
+  z-index: -1;
   background-image: url("/header-banner.jpg");
   background-size: cover;
   background-position: center 40%;
@@ -83,6 +84,14 @@ body {
 .bg-banner {
   position: relative;
   overflow: hidden;
+}
+
+/* Every other top-level page section stays opaque, same as before .site-bg-photo
+   existed — otherwise the shared fixed photo would bleed faintly through any
+   section that never declared its own background (Industries, Who We Are,
+   Founder, forms, etc.), which never happened pre-animation. */
+main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed) {
+  background-color: var(--background);
 }
 
 /* Footer-specific photo background — separate photo, doesn't use the shared layer */
