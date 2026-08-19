@@ -99,31 +99,46 @@ body {
 
 /* Light section backgrounds that let the fixed banner photo show through
    faintly beneath a low-opacity beige wash, instead of a flat color tint */
-.bg-section-saffron {
-  background-image:
-    linear-gradient(color-mix(in srgb, #fdf0e2 88%, transparent), color-mix(in srgb, #fdf0e2 88%, transparent)),
-    url("/header-banner.jpg");
-  background-size: cover, cover;
-  background-position: center, center 40%;
-  background-attachment: scroll, fixed;
-  background-repeat: no-repeat, no-repeat;
+.bg-section-saffron,
+.bg-section-mixed {
+  position: relative;
+  overflow: hidden;
 }
 
-.bg-section-mixed {
-  background-image:
-    linear-gradient(color-mix(in srgb, #fbf1ea 88%, transparent), color-mix(in srgb, #fbf1ea 88%, transparent)),
-    url("/header-banner.jpg");
-  background-size: cover, cover;
-  background-position: center, center 40%;
-  background-attachment: scroll, fixed;
-  background-repeat: no-repeat, no-repeat;
+.bg-section-saffron::before,
+.bg-section-mixed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/header-banner.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+  animation: bg-zoom 20s ease-in-out infinite;
+}
+
+.bg-section-saffron::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: color-mix(in srgb, #fdf0e2 88%, transparent);
+}
+
+.bg-section-mixed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: color-mix(in srgb, #fbf1ea 88%, transparent);
 }
 
 @media (max-width: 768px) {
   /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
-  .bg-section-saffron,
-  .bg-section-mixed {
-    background-attachment: scroll, scroll;
+  .bg-section-saffron::before,
+  .bg-section-mixed::before {
+    background-attachment: scroll;
   }
 }
 
@@ -316,7 +331,9 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .bg-banner::before {
+  .bg-banner::before,
+  .bg-section-saffron::before,
+  .bg-section-mixed::before {
     background-attachment: scroll;
     animation: none;
   }
