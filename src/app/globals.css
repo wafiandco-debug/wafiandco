@@ -32,6 +32,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Reserves the scrollbar's width in layout at all times, so 100vw-based
+     full-bleed elements (see main > section::before below) always agree
+     with the page's actual content width instead of overshooting by the
+     scrollbar's width and leaving a gap at one edge. */
+  scrollbar-gutter: stable;
 }
 
 body {
