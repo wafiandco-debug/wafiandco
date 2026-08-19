@@ -255,13 +255,14 @@ main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::
    reads better there. Desktop/tablet keep the justified look unchanged. */
 .text-body {
   text-align: left;
-  hyphens: auto;
+  hyphens: none;
   line-height: 1.8;
 }
 
 @media (min-width: 640px) {
   .text-body {
     text-align: justify;
+    hyphens: auto;
   }
 }
 
