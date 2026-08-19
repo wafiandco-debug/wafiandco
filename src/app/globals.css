@@ -79,11 +79,20 @@ body {
   }
 }
 
-/* Hero/CTA banner sections: transparent so the shared photo shows through;
-   each already has its own dark gradient overlay div in JSX on top. */
+/* Hero section: transparent so the shared photo shows through; has its own
+   dark gradient overlay div in JSX on top. The small rounded CTA cards
+   (div.bg-banner, nested inside a plain wrapper section below) get their
+   own warm dark gradient instead — no photo dependency at all. */
 .bg-banner {
   position: relative;
   overflow: hidden;
+}
+
+div.bg-banner {
+  background:
+    radial-gradient(circle at 15% 15%, color-mix(in srgb, var(--color-saffron) 40%, transparent), transparent 60%),
+    radial-gradient(circle at 85% 90%, color-mix(in srgb, var(--color-gold) 35%, transparent), transparent 55%),
+    linear-gradient(135deg, #0a0a0b 0%, #1c1d20 55%, #2c2e33 100%);
 }
 
 /* Every other top-level page section stays opaque, same as before .site-bg-photo
@@ -93,16 +102,7 @@ body {
    sections are themselves width-capped (max-w-*) directly on the <section>,
    so a plain background-color wouldn't reach the viewport edges on wide
    screens — this uses a full-bleed pseudo-element instead, breaking out of
-   the section's own width while staying clipped to its height.
-
-   A few of these sections also wrap a nested .bg-banner CTA card (a <div>,
-   not a <section>, so it doesn't match the :not() exclusions above) — that
-   card still needs genuine transparency through to .site-bg-photo, not a
-   flat white backdrop. CtaBackgroundHole.tsx measures each such card at
-   runtime and sets --hole-x/y/w/h on its wrapper section; the mask below
-   cuts exactly that rectangle out of this opaque fill so the card sees the
-   real shared layer directly, not a copy. Sections without a card default
-   to a 0x0 hole (no visible effect). */
+   the section's own width while staying clipped to its height. */
 main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed) {
   position: relative;
 }
@@ -116,16 +116,6 @@ main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
-  -webkit-mask-size: 100% 100%, var(--hole-w, 0px) var(--hole-h, 0px);
-  -webkit-mask-position: 0 0, var(--hole-x, 0px) var(--hole-y, 0px);
-  -webkit-mask-repeat: no-repeat, no-repeat;
-  -webkit-mask-composite: source-out;
-  mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
-  mask-size: 100% 100%, var(--hole-w, 0px) var(--hole-h, 0px);
-  mask-position: 0 0, var(--hole-x, 0px) var(--hole-y, 0px);
-  mask-repeat: no-repeat, no-repeat;
-  mask-composite: exclude;
   z-index: -1;
   background-color: var(--background);
 }

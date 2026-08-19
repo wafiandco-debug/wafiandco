@@ -16,7 +16,6 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ImageProtection from "@/components/ImageProtection";
-import CtaBackgroundHole from "@/components/CtaBackgroundHole";
 import { siteConfig, navLinks, services } from "@/lib/site";
 import "./globals.css";
 
@@ -225,7 +224,6 @@ export default function RootLayout({
         <ScrollToTop />
         <WhatsAppButton />
         <ImageProtection />
-        <CtaBackgroundHole />
       </body>
     </html>
   );

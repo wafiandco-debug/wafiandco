@@ -295,7 +295,6 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="relative overflow-hidden rounded-3xl bg-banner px-8 py-14 text-center text-white sm:px-16">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85" />
           <div className="gradient-blob absolute -top-16 left-1/3 h-56 w-56 rounded-full bg-saffron/30" />
           <h2 className="relative font-serif text-3xl">
             Ready to work with a firm that knows your business?
