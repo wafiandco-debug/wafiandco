@@ -89,8 +89,25 @@ body {
 /* Every other top-level page section stays opaque, same as before .site-bg-photo
    existed — otherwise the shared fixed photo would bleed faintly through any
    section that never declared its own background (Industries, Who We Are,
-   Founder, forms, etc.), which never happened pre-animation. */
+   Founder, forms, etc.), which never happened pre-animation. Many of these
+   sections are themselves width-capped (max-w-*) directly on the <section>,
+   so a plain background-color wouldn't reach the viewport edges on wide
+   screens — this uses a full-bleed pseudo-element instead, breaking out of
+   the section's own width while staying clipped to its height. */
 main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed) {
+  position: relative;
+}
+
+main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  z-index: -1;
   background-color: var(--background);
 }
 
