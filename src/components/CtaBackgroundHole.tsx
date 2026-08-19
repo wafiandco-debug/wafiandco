@@ -24,10 +24,19 @@ export default function CtaBackgroundHole() {
         if (!section) return;
         const cardRect = card.getBoundingClientRect();
         const sectionRect = section.getBoundingClientRect();
-        section.style.setProperty("--hole-x", `${cardRect.left}px`);
-        section.style.setProperty("--hole-y", `${cardRect.top - sectionRect.top}px`);
-        section.style.setProperty("--hole-w", `${cardRect.width}px`);
-        section.style.setProperty("--hole-h", `${cardRect.height}px`);
+        // The hole is a plain rectangle, but the card has rounded corners
+        // (rounded-3xl = 24px) — a hole matching the card's full bounding
+        // box would poke past that curve at each corner, exposing a sliver
+        // of undimmed .site-bg-photo outside the card's own rounded edge
+        // (looked like a second, offset frame). Insetting by >= the corner
+        // radius keeps every hole corner safely inside the curve; the tiny
+        // corner tip that loses the see-through effect is covered by the
+        // card's own dark overlay anyway, so it's not visible.
+        const inset = 28;
+        section.style.setProperty("--hole-x", `${cardRect.left + inset}px`);
+        section.style.setProperty("--hole-y", `${cardRect.top - sectionRect.top + inset}px`);
+        section.style.setProperty("--hole-w", `${Math.max(0, cardRect.width - inset * 2)}px`);
+        section.style.setProperty("--hole-h", `${Math.max(0, cardRect.height - inset * 2)}px`);
       });
     }
 
