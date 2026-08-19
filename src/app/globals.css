@@ -82,17 +82,17 @@ body {
 /* Hero section: transparent so the shared photo shows through; has its own
    dark gradient overlay div in JSX on top. The small rounded CTA cards
    (div.bg-banner, nested inside a plain wrapper section below) get their
-   own warm dark gradient instead — no photo dependency at all. */
+   own static copy of the same photo — no animation, no dependency on
+   .site-bg-photo — dimmed by a dark overlay div in JSX for text contrast. */
 .bg-banner {
   position: relative;
   overflow: hidden;
 }
 
 div.bg-banner {
-  background:
-    radial-gradient(circle at 15% 15%, color-mix(in srgb, var(--color-saffron) 40%, transparent), transparent 60%),
-    radial-gradient(circle at 85% 90%, color-mix(in srgb, var(--color-gold) 35%, transparent), transparent 55%),
-    linear-gradient(135deg, #0a0a0b 0%, #1c1d20 55%, #2c2e33 100%);
+  background-image: url("/header-banner.jpg");
+  background-size: cover;
+  background-position: center 40%;
 }
 
 /* Every other top-level page section stays opaque, same as before .site-bg-photo
