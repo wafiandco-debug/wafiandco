@@ -55,10 +55,30 @@ body {
 
 /* Shared banner photo background — stays fixed in the viewport as the page scrolls */
 .bg-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background-image: url("/header-banner.jpg");
   background-size: cover;
   background-position: center 40%;
   background-attachment: fixed;
+  animation: bg-zoom 20s ease-in-out infinite;
+}
+
+@keyframes bg-zoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
 }
 
 /* Footer-specific photo background — same fixed behavior, different photo */
@@ -71,7 +91,7 @@ body {
 
 @media (max-width: 768px) {
   /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
-  .bg-banner,
+  .bg-banner::before,
   .bg-banner-footer {
     background-attachment: scroll;
   }
@@ -296,8 +316,9 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .bg-banner {
+  .bg-banner::before {
     background-attachment: scroll;
+    animation: none;
   }
 }
 
