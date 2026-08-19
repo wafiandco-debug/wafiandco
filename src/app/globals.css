@@ -66,7 +66,6 @@ body {
   background-size: cover;
   background-position: center 40%;
   animation: bg-zoom 20s ease-in-out infinite;
-  animation-delay: var(--bg-zoom-offset, 0s);
   pointer-events: none;
 }
 
@@ -87,37 +86,6 @@ body {
   overflow: hidden;
 }
 
-/* .bg-banner is used two ways: as the top-level hero <section> (a direct
-   child of <main>, correctly transparent to .site-bg-photo since nothing
-   opaque sits between them) and as a small rounded CTA card <div> nested
-   inside one of the plain wrapper sections above (which is now opaque —
-   see the rule below — so the card can no longer "see through" its own
-   parent to reach the shared photo). Give just the nested <div> case its
-   own viewport-anchored photo layer (same image/position/size as
-   .site-bg-photo, so the crop lines up identically) with animation-delay
-   synced to the same wall-clock phase via --bg-zoom-offset — otherwise
-   this layer's animation restarts from 0 on every page navigation while
-   .site-bg-photo keeps running uninterrupted, drifting out of sync and
-   making it look like a different backdrop instead of the same one. */
-div.bg-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: url("/header-banner.jpg");
-  background-size: cover;
-  background-position: center 40%;
-  background-attachment: fixed;
-  animation: bg-zoom 20s ease-in-out infinite;
-  animation-delay: var(--bg-zoom-offset, 0s);
-}
-
-@media (max-width: 768px) {
-  div.bg-banner::before {
-    background-attachment: scroll;
-  }
-}
-
 /* Every other top-level page section stays opaque, same as before .site-bg-photo
    existed — otherwise the shared fixed photo would bleed faintly through any
    section that never declared its own background (Industries, Who We Are,
@@ -125,7 +93,16 @@ div.bg-banner::before {
    sections are themselves width-capped (max-w-*) directly on the <section>,
    so a plain background-color wouldn't reach the viewport edges on wide
    screens — this uses a full-bleed pseudo-element instead, breaking out of
-   the section's own width while staying clipped to its height. */
+   the section's own width while staying clipped to its height.
+
+   A few of these sections also wrap a nested .bg-banner CTA card (a <div>,
+   not a <section>, so it doesn't match the :not() exclusions above) — that
+   card still needs genuine transparency through to .site-bg-photo, not a
+   flat white backdrop. CtaBackgroundHole.tsx measures each such card at
+   runtime and sets --hole-x/y/w/h on its wrapper section; the mask below
+   cuts exactly that rectangle out of this opaque fill so the card sees the
+   real shared layer directly, not a copy. Sections without a card default
+   to a 0x0 hole (no visible effect). */
 main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed) {
   position: relative;
 }
@@ -139,6 +116,16 @@ main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  -webkit-mask-size: 100% 100%, var(--hole-w, 0px) var(--hole-h, 0px);
+  -webkit-mask-position: 0 0, var(--hole-x, 0px) var(--hole-y, 0px);
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-composite: source-out;
+  mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  mask-size: 100% 100%, var(--hole-w, 0px) var(--hole-h, 0px);
+  mask-position: 0 0, var(--hole-x, 0px) var(--hole-y, 0px);
+  mask-repeat: no-repeat, no-repeat;
+  mask-composite: exclude;
   z-index: -1;
   background-color: var(--background);
 }
@@ -358,8 +345,7 @@ main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::
   html {
     scroll-behavior: auto;
   }
-  .site-bg-photo,
-  div.bg-banner::before {
+  .site-bg-photo {
     animation: none;
   }
 }
