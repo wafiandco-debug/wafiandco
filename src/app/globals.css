@@ -67,7 +67,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-image: url("/header-banner.jpg");
+  background-image: url("/header-banner.webp");
   background-size: cover;
   background-position: center 40%;
   animation: bg-zoom 16s ease-in-out infinite;
@@ -95,7 +95,7 @@ body {
 }
 
 div.bg-banner {
-  background-image: url("/header-banner.jpg");
+  background-image: url("/header-banner.webp");
   background-size: cover;
   background-position: center 40%;
 }
@@ -127,7 +127,7 @@ main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::
 
 /* Footer-specific photo background — separate photo, doesn't use the shared layer */
 .bg-banner-footer {
-  background-image: url("/footer-banner.jpg");
+  background-image: url("/footer-banner.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
