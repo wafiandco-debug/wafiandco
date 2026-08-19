@@ -197,6 +197,7 @@ export default function RootLayout({
       className={`${inter.variable} ${lora.variable} ${quicksand.variable} ${roboto.variable} ${openSans.variable} ${merriweather.variable} ${playfairDisplay.variable} ${montserrat.variable} ${robotoMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <div className="site-bg-photo" aria-hidden="true" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

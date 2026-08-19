@@ -53,22 +53,19 @@ body {
   }
 }
 
-/* Shared banner photo background — stays fixed in the viewport as the page scrolls */
-.bg-banner {
-  position: relative;
-  overflow: hidden;
-}
-
-.bg-banner::before {
-  content: "";
-  position: absolute;
+/* Single site-wide photo layer, fixed behind everything, that the page
+   scrolls over. .bg-banner / .bg-section-saffron / .bg-section-mixed used to
+   each paint their own copy of this photo (independently animated, so the
+   zoom looked out of sync at section boundaries) — now they're just
+   transparent/tinted windows onto this one shared, single-timeline layer. */
+.site-bg-photo {
+  position: fixed;
   inset: 0;
-  z-index: -1;
   background-image: url("/header-banner.jpg");
   background-size: cover;
   background-position: center 40%;
-  background-attachment: fixed;
   animation: bg-zoom 20s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes bg-zoom {
@@ -81,7 +78,14 @@ body {
   }
 }
 
-/* Footer-specific photo background — same fixed behavior, different photo */
+/* Hero/CTA banner sections: transparent so the shared photo shows through;
+   each already has its own dark gradient overlay div in JSX on top. */
+.bg-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Footer-specific photo background — separate photo, doesn't use the shared layer */
 .bg-banner-footer {
   background-image: url("/footer-banner.jpg");
   background-size: cover;
@@ -91,55 +95,20 @@ body {
 
 @media (max-width: 768px) {
   /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
-  .bg-banner::before,
   .bg-banner-footer {
     background-attachment: scroll;
   }
 }
 
-/* Light section backgrounds that let the fixed banner photo show through
-   faintly beneath a low-opacity beige wash, instead of a flat color tint */
-.bg-section-saffron,
-.bg-section-mixed {
-  position: relative;
-  overflow: hidden;
-}
-
-.bg-section-saffron::before,
-.bg-section-mixed::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background-image: url("/header-banner.jpg");
-  background-size: cover;
-  background-position: center 40%;
-  background-attachment: fixed;
-  animation: bg-zoom 20s ease-in-out infinite;
-}
-
-.bg-section-saffron::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+/* Light section backgrounds: a translucent wash tinting the shared photo
+   layer showing through from behind, instead of a flat color or their own
+   copy of the image. */
+.bg-section-saffron {
   background-color: color-mix(in srgb, #fdf0e2 88%, transparent);
 }
 
-.bg-section-mixed::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+.bg-section-mixed {
   background-color: color-mix(in srgb, #fbf1ea 88%, transparent);
-}
-
-@media (max-width: 768px) {
-  /* iOS Safari does not support fixed background-attachment reliably; falls back to normal scroll */
-  .bg-section-saffron::before,
-  .bg-section-mixed::before {
-    background-attachment: scroll;
-  }
 }
 
 /* Gradients — black theme with saffron/gold accents (no green, no blue) */
@@ -331,10 +300,7 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .bg-banner::before,
-  .bg-section-saffron::before,
-  .bg-section-mixed::before {
-    background-attachment: scroll;
+  .site-bg-photo {
     animation: none;
   }
 }
