@@ -70,7 +70,7 @@ body {
   background-image: url("/header-banner.jpg");
   background-size: cover;
   background-position: center 40%;
-  animation: bg-zoom 20s ease-in-out infinite;
+  animation: bg-zoom 16s ease-in-out infinite;
   pointer-events: none;
 }
 
