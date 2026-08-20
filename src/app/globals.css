@@ -100,19 +100,23 @@ div.bg-banner {
   background-position: center 40%;
 }
 
-/* Every other top-level page section stays opaque, same as before .site-bg-photo
-   existed — otherwise the shared fixed photo would bleed faintly through any
-   section that never declared its own background (Industries, Who We Are,
-   Founder, forms, etc.), which never happened pre-animation. Many of these
-   sections are themselves width-capped (max-w-*) directly on the <section>,
-   so a plain background-color wouldn't reach the viewport edges on wide
-   screens — this uses a full-bleed pseudo-element instead, breaking out of
-   the section's own width while staying clipped to its height. */
-main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed) {
+/* Every other top-level page section (or article — the Insights article
+   page has no hero, just <article> as its only main child) stays opaque,
+   same as before .site-bg-photo existed — otherwise the shared fixed photo
+   would bleed faintly through any wrapper that never declared its own
+   background (Industries, Who We Are, Founder, forms, the whole article
+   body, etc.), which never happened pre-animation. Many of these wrappers
+   are themselves width-capped (max-w-*) directly on the element, so a plain
+   background-color wouldn't reach the viewport edges on wide screens —
+   this uses a full-bleed pseudo-element instead, breaking out of the
+   element's own width while staying clipped to its height. */
+main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed),
+main > article {
   position: relative;
 }
 
-main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::before {
+main > section:not(.bg-banner):not(.bg-section-saffron):not(.bg-section-mixed)::before,
+main > article::before {
   content: "";
   position: absolute;
   top: 0;
