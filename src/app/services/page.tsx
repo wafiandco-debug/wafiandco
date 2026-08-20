@@ -107,8 +107,6 @@ const badgeGradients = [
   "text-gradient-gold",
 ];
 
-const fieldBackgrounds = ["bg-field-navy", "bg-field-saffron", "bg-field-gold"];
-
 const cardGradients = ["bg-gradient-navy", "bg-gradient-saffron", "bg-gradient-gold"];
 
 const faqs = [
@@ -194,7 +192,7 @@ export default function ServicesPage() {
             <Reveal key={service.slug} delay={(i % 3) * 60}>
               <div
                 id={service.slug}
-                className={`group scroll-mt-24 rounded-3xl ${fieldBackgrounds[i % fieldBackgrounds.length]} p-8 grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start transition-shadow duration-300 hover:shadow-lg`}
+                className="group card-glass scroll-mt-24 grid gap-8 rounded-3xl p-8 transition-shadow duration-300 hover:shadow-lg sm:grid-cols-[auto_1fr] sm:items-start"
               >
                 <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-3">
                   <div
