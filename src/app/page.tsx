@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { industries, services, siteConfig } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
 import IndustryIcon from "@/components/IndustryIcon";
+
+export const metadata: Metadata = {
+  alternates: { canonical: siteConfig.url },
+};
 
 const whyUs = [
   {

@@ -12,6 +12,7 @@ const description =
 export const metadata: Metadata = {
   title: "About Us | " + siteConfig.name,
   description,
+  alternates: { canonical: `${siteConfig.url}/about` },
   openGraph: {
     title: "About Us | " + siteConfig.name,
     description,
