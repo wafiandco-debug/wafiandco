@@ -1,5 +1,9 @@
 import { supabase } from "@/lib/supabase";
 
+// Shared with the sitemap so paginated pages beyond page 1 stay listed
+// there automatically as more articles get published.
+export const INSIGHTS_PER_PAGE = 5;
+
 export type Insight = {
   slug: string;
   title: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getInsights } from "@/lib/insights";
+import { getInsights, INSIGHTS_PER_PAGE } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 
@@ -12,7 +12,7 @@ const tagGradients = [
   "text-gradient-navy",
 ];
 
-const PER_PAGE = 5;
+const PER_PAGE = INSIGHTS_PER_PAGE;
 
 const baseDescription =
   "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.";

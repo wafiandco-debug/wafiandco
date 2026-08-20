@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getInsights } from "@/lib/insights";
+import { getInsights, INSIGHTS_PER_PAGE } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 
 export const revalidate = 60;
@@ -23,5 +23,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(post.date),
   }));
 
-  return [...staticRoutes, ...insightRoutes];
+  // Page 1 is already covered by "/insights" above — list page 2 onward so
+  // each self-canonicalized pagination page (see insights/page.tsx) is
+  // discoverable straight from the sitemap, not just via crawling the
+  // in-page "next page" link.
+  const totalPages = Math.max(1, Math.ceil(insights.length / INSIGHTS_PER_PAGE));
+  const paginationRoutes: MetadataRoute.Sitemap = Array.from(
+    { length: totalPages - 1 },
+    (_, i) => ({ url: `${siteConfig.url}/insights?page=${i + 2}` })
+  );
+
+  return [...staticRoutes, ...insightRoutes, ...paginationRoutes];
 }
