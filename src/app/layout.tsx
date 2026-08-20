@@ -185,6 +185,10 @@ const siteNavigationJsonLd = {
   ),
 };
 
+const supabaseOrigin = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin
+  : null;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -196,6 +200,13 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${lora.variable} ${quicksand.variable} ${roboto.variable} ${openSans.variable} ${merriweather.variable} ${playfairDisplay.variable} ${montserrat.variable} ${robotoMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Warms up the connection to third-party origins the browser won't
+            otherwise discover until it parses far enough to hit the
+            script/image tag that actually requests them. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        {supabaseOrigin && <link rel="preconnect" href={supabaseOrigin} />}
+      </head>
       <body className="min-h-full flex flex-col">
         <div className="site-bg-photo" aria-hidden="true" />
         <script
