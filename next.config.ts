@@ -32,6 +32,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // robots.txt disallows /admin/ from being crawled, but Google's own
+        // guidance is that disallow alone doesn't guarantee a URL stays out
+        // of search results — a page can still surface as a bare link if
+        // discovered another way, since blocking crawling also blocks
+        // Google from seeing there's nothing worth indexing. This header is
+        // the authoritative signal, independent of robots.txt.
+        source: "/admin/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
     ];
   },
 };
