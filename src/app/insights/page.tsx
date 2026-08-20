@@ -4,31 +4,6 @@ import { getInsights } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 
-export const metadata: Metadata = {
-  title: "Insights | " + siteConfig.name,
-  description:
-    "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
-  alternates: {
-    canonical: `${siteConfig.url}/insights`,
-    types: { "application/rss+xml": `${siteConfig.url}/feed.xml` },
-  },
-  openGraph: {
-    title: "Insights | " + siteConfig.name,
-    description:
-      "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
-    url: `${siteConfig.url}/insights`,
-    type: "website",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Insights | " + siteConfig.name,
-    description:
-      "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.",
-    images: ["/og-image.jpg"],
-  },
-};
-
 export const revalidate = 60;
 
 const tagGradients = [
@@ -38,6 +13,50 @@ const tagGradients = [
 ];
 
 const PER_PAGE = 5;
+
+const baseDescription =
+  "Practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala, for founders and businesses.";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}): Promise<Metadata> {
+  const { page: pageParam } = await searchParams;
+  const allInsights = await getInsights();
+  const totalPages = Math.max(1, Math.ceil(allInsights.length / PER_PAGE));
+  const page = Math.min(Math.max(1, Number(pageParam) || 1), totalPages);
+
+  const title = page > 1 ? `Insights (Page ${page}) | ${siteConfig.name}` : "Insights | " + siteConfig.name;
+  // Each paginated page holds genuinely different articles, so it self-
+  // canonicalizes to its own URL instead of collapsing to page 1 — the
+  // old static metadata always pointed every page at /insights, which
+  // told Google the "real" content lived on page 1 alone, putting
+  // page 2+ articles at risk of never being indexed.
+  const canonical = page > 1 ? `${siteConfig.url}/insights?page=${page}` : `${siteConfig.url}/insights`;
+
+  return {
+    title,
+    description: baseDescription,
+    alternates: {
+      canonical,
+      types: { "application/rss+xml": `${siteConfig.url}/feed.xml` },
+    },
+    openGraph: {
+      title,
+      description: baseDescription,
+      url: canonical,
+      type: "website",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: baseDescription,
+      images: ["/og-image.jpg"],
+    },
+  };
+}
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
