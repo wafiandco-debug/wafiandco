@@ -188,8 +188,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-20">
-        <div className="flex flex-col gap-8">
+      <section className="relative overflow-hidden bg-section-saffron py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6">
           {services.map((service, i) => (
             <Reveal key={service.slug} delay={(i % 3) * 60}>
               <div
