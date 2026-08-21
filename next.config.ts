@@ -10,6 +10,33 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // These three slugs belonged to the old hardcoded fallback-article
+      // system (src/lib/insights.ts) removed once real Supabase-backed
+      // articles existed. Google still has itr-filing-checklist and
+      // why-a-virtual-cfo indexed (confirmed via a live site: search) —
+      // they currently 404, so anyone clicking through from search hits a
+      // dead end. Redirecting to genuinely relevant live content instead
+      // of leaving them as 404 also signals Google to drop the old URLs
+      // faster than waiting out repeated 404 crawls.
+      {
+        source: "/insights/itr-filing-checklist",
+        destination: "/insights",
+        permanent: true,
+      },
+      {
+        source: "/insights/why-a-virtual-cfo",
+        destination: "/insights/data-analytics-accounting-compliance-to-strategy",
+        permanent: true,
+      },
+      {
+        source: "/insights/gst-return-due-dates",
+        destination: "/insights",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
