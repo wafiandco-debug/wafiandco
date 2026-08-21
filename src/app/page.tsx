@@ -16,7 +16,7 @@ const whyUs = [
   },
   {
     title: "Personal, responsive service",
-    body: "Direct access to the people handling your accounts — no call centres, no runaround.",
+    body: "Direct access to the people handling your accounts.",
   },
   {
     title: "Business-first advice",
