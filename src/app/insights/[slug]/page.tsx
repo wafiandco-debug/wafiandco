@@ -170,13 +170,6 @@ export default async function InsightPage({
         {post.excerpt}
       </p>
       <ArticleContent html={post.content} />
-      <p className="text-body-justify mt-6 text-navy/70">
-        For advice specific to your situation, please{" "}
-        <Link href="/contact" className="text-saffron transition-colors hover:text-gold">
-          get in touch with our team
-        </Link>
-        .
-      </p>
       <ShareButtons url={url} title={post.title} slug={post.slug} />
       <RelatedArticles current={post} />
     </article>
