@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase";
 import { sanitizeArticleHtml } from "@/lib/sanitizeArticleHtml";
 
@@ -50,5 +51,11 @@ export async function POST(req: Request) {
   });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  revalidatePath(`/insights/${slug}`);
+  revalidatePath("/insights");
+  revalidatePath("/sitemap.xml");
+  revalidatePath("/feed.xml");
+
   return NextResponse.json({ ok: true });
 }
