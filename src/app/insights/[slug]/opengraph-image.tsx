@@ -113,19 +113,19 @@ export default async function Image({
           }}
         >
           {authorName ? (
-            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
               {authorPhoto ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={authorPhoto}
-                  width={84}
-                  height={84}
+                  width={132}
+                  height={132}
                   style={{
-                    width: 84,
-                    height: 84,
+                    width: 132,
+                    height: 132,
                     borderRadius: "50%",
                     objectFit: "cover",
-                    border: "3px solid rgba(255,255,255,0.25)",
+                    border: "4px solid rgba(255,255,255,0.25)",
                   }}
                 />
               ) : (
@@ -134,25 +134,25 @@ export default async function Image({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    width: 84,
-                    height: 84,
+                    width: 132,
+                    height: 132,
                     borderRadius: "50%",
                     backgroundColor: "#ee741e",
                     color: "#ffffff",
-                    fontSize: 32,
+                    fontSize: 48,
                     fontWeight: 700,
-                    border: "3px solid rgba(255,255,255,0.25)",
+                    border: "4px solid rgba(255,255,255,0.25)",
                   }}
                 >
                   {initials(authorName)}
                 </div>
               )}
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#ffffff" }}>
+                <div style={{ display: "flex", fontSize: 30, fontWeight: 700, color: "#ffffff" }}>
                   {authorName}
                 </div>
                 {authorPosition && (
-                  <div style={{ display: "flex", fontSize: 18, color: "#ffb648", marginTop: 2 }}>
+                  <div style={{ display: "flex", fontSize: 21, color: "#ffb648", marginTop: 4 }}>
                     {authorPosition}
                   </div>
                 )}
