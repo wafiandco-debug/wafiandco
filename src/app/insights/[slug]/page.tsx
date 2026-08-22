@@ -40,13 +40,11 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.date,
       authors: post.author_name ? [post.author_name] : undefined,
-      images: [post.author_photo_url || "/og-image.jpg"],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [post.author_photo_url || "/og-image.jpg"],
     },
   };
 }
