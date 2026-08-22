@@ -5,6 +5,14 @@ import { siteConfig } from "@/lib/site";
 export const alt = "WAFI & CO. Insights article";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+// Without this, every request (including every social-app link-preview
+// crawler hit) re-renders the image from scratch — fetching the author
+// photo over the network and running Satori each time takes 1.5-2.5s,
+// which some mobile crawlers time out on, causing the share card to
+// silently not appear. Caching lets Vercel's edge serve it instantly
+// after the first render; edits still show up within the hour, and
+// revalidatePath on publish/edit invalidates it immediately anyway.
+export const revalidate = 3600;
 
 function initials(name: string) {
   const parts = name.trim().split(/\s+/);
