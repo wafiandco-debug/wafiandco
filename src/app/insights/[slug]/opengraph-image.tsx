@@ -1,9 +1,15 @@
 import { ImageResponse } from "next/og";
 import { getInsight } from "@/lib/insights";
+import { siteConfig } from "@/lib/site";
 
 export const alt = "WAFI & CO. Insights article";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "")).toUpperCase();
+}
 
 export default async function Image({
   params,
@@ -14,6 +20,11 @@ export default async function Image({
   const post = await getInsight(slug);
   const title = post?.title ?? "WAFI & CO. Insights";
   const category = post?.category ?? "Insights";
+  const authorName = post?.author_name ?? null;
+  const authorPosition = post?.author_position ?? null;
+  const authorPhoto = post?.author_photo_url
+    ? new URL(post.author_photo_url, siteConfig.url).toString()
+    : null;
 
   return new ImageResponse(
     (
@@ -35,21 +46,25 @@ export default async function Image({
           <div
             style={{
               display: "flex",
-              fontSize: 40,
+              fontFamily: "serif",
+              fontSize: 42,
               fontWeight: 700,
-              color: "#ffffff",
               letterSpacing: -1,
+              backgroundImage:
+                "linear-gradient(100deg, #ffb648 0%, #ffffff 50%, #ffb648 100%)",
+              backgroundClip: "text",
+              color: "transparent",
             }}
           >
-            WAFI<span style={{ color: "#ee741e", margin: "0 12px" }}>&amp;</span>CO.
+            WAFI &amp; CO.
           </div>
           <div
             style={{
               display: "flex",
-              fontSize: 18,
+              fontSize: 17,
               color: "#cf9a3f",
               letterSpacing: 4,
-              marginTop: 6,
+              marginTop: 8,
             }}
           >
             CHARTERED ACCOUNTANTS
@@ -79,7 +94,7 @@ export default async function Image({
               WebkitBoxOrient: "vertical",
               WebkitLineClamp: 3,
               overflow: "hidden",
-              fontSize: 54,
+              fontSize: 50,
               fontWeight: 700,
               color: "#ffffff",
               lineHeight: 1.2,
@@ -90,8 +105,65 @@ export default async function Image({
           </div>
         </div>
 
-        <div style={{ display: "flex", fontSize: 20, color: "rgba(255,255,255,0.55)" }}>
-          wafiandco.com/insights
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {authorName ? (
+            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+              {authorPhoto ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={authorPhoto}
+                  width={84}
+                  height={84}
+                  style={{
+                    width: 84,
+                    height: 84,
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    border: "3px solid rgba(255,255,255,0.25)",
+                  }}
+                />
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 84,
+                    height: 84,
+                    borderRadius: "50%",
+                    backgroundColor: "#ee741e",
+                    color: "#ffffff",
+                    fontSize: 32,
+                    fontWeight: 700,
+                    border: "3px solid rgba(255,255,255,0.25)",
+                  }}
+                >
+                  {initials(authorName)}
+                </div>
+              )}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#ffffff" }}>
+                  {authorName}
+                </div>
+                {authorPosition && (
+                  <div style={{ display: "flex", fontSize: 18, color: "#ffb648", marginTop: 2 }}>
+                    {authorPosition}
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: "flex" }} />
+          )}
+          <div style={{ display: "flex", fontSize: 20, color: "rgba(255,255,255,0.55)" }}>
+            wafiandco.com/insights
+          </div>
         </div>
       </div>
     ),
