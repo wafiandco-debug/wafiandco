@@ -57,6 +57,31 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
+          // Restricts which origins scripts, styles, images, fonts, frames,
+          // and network requests can load from — the main defense if a
+          // script ever got injected somewhere (e.g. rich-text article
+          // content). 'unsafe-inline' on script-src is needed for Next.js's
+          // hydration/JSON-LD inline scripts and the GA snippet; connect-src
+          // and frame-src stay locked to the specific third parties the site
+          // actually talks to (Supabase, GA, the Maps embed), so even with
+          // inline scripts permitted, exfiltration/embedding targets are
+          // limited to that allowlist.
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob: https://*.supabase.co",
+              "font-src 'self' data:",
+              "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com",
+              "frame-src 'self' https://www.google.com",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+            ].join("; "),
+          },
         ],
       },
       {
