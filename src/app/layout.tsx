@@ -99,13 +99,11 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     type: "website",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.fullName }],
   },
   twitter: {
     card: "summary_large_image",
     title: "WAFI & CO. | Chartered Accountants",
     description: defaultDescription,
-    images: ["/og-image.jpg"],
   },
 };
 
