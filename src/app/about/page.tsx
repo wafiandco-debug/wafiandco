@@ -172,7 +172,7 @@ export default function AboutPage() {
                   alt={`${founder.name}, Founder of WAFI & CO.`}
                   width={240}
                   height={320}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
                 />
               ) : (
                 <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-navy/40">
