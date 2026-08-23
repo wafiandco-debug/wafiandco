@@ -18,6 +18,7 @@ export async function GET() {
   const items = insights
     .map((post) => {
       const url = `${siteConfig.url}/insights/${post.slug}`;
+      const imageUrl = `${url}/opengraph-image`;
       const pubDate = new Date(post.date).toUTCString();
       return `
     <item>
@@ -28,12 +29,14 @@ export async function GET() {
       <description>${escapeXml(post.excerpt)}</description>
       <category>${escapeXml(post.category)}</category>
       ${post.author_name ? `<author>${escapeXml(post.author_name)}</author>` : ""}
+      <media:content url="${imageUrl}" medium="image" type="image/png" width="1200" height="630" />
+      <media:thumbnail url="${imageUrl}" width="1200" height="630" />
     </item>`;
     })
     .join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>${escapeXml(siteConfig.fullName)} — Insights</title>
     <link>${siteConfig.url}/insights</link>
