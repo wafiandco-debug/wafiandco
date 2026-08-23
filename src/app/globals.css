@@ -318,6 +318,10 @@ main > article::before {
   animation-delay: 0.18s;
 }
 
+.animate-in-delay-4 {
+  animation-delay: 0.4s;
+}
+
 /* Accordion expand transition */
 .accordion-panel {
   display: grid;
