@@ -114,7 +114,7 @@ const organizationJsonLd = {
   alternateName: siteConfig.name,
   url: siteConfig.url,
   logo: `${siteConfig.url}/wafi-logo-text.png`,
-  image: `${siteConfig.url}/og-image.jpg`,
+  image: `${siteConfig.url}/opengraph-image`,
   description: defaultDescription,
   telephone: siteConfig.phoneHref.replace("tel:", ""),
   email: siteConfig.publicEmail,
