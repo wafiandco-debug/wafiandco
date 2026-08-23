@@ -66,7 +66,7 @@ export default async function InsightPage({
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    ...(post.author_photo_url ? { image: [post.author_photo_url] } : {}),
+    image: [`${url}/opengraph-image`],
     author: post.author_name
       ? {
           "@type": "Person",
