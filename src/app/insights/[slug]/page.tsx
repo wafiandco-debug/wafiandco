@@ -8,6 +8,7 @@ import ArticleContent from "@/components/ArticleContent";
 import ShareButtons from "@/components/ShareButtons";
 import ViewCounter from "@/components/ViewCounter";
 import RelatedArticles from "@/components/RelatedArticles";
+import Reveal from "@/components/Reveal";
 
 export const revalidate = 60;
 
@@ -105,18 +106,21 @@ export default async function InsightPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Link href="/insights" className="text-sm font-medium text-saffron transition-colors hover:text-gold">
+      <Link
+        href="/insights"
+        className="animate-in text-sm font-medium text-saffron transition-colors hover:text-gold"
+      >
         ← Back to Insights
       </Link>
-      <span className="mt-6 block text-xs font-semibold uppercase tracking-wide text-gradient-saffron">
+      <span className="animate-in animate-in-delay-1 mt-6 block text-xs font-semibold uppercase tracking-wide text-gradient-saffron">
         {post.category}
       </span>
-      <h1 className="mt-3 font-serif text-3xl text-navy sm:text-4xl">
+      <h1 className="animate-in animate-in-delay-1 mt-3 font-serif text-3xl text-navy sm:text-4xl">
         {post.title}
       </h1>
-      <div className="mt-4 h-1 w-16 rounded-full bg-gradient-brand" />
+      <div className="animate-in animate-in-delay-1 mt-4 h-1 w-16 rounded-full bg-gradient-brand" />
       <ViewCounter slug={post.slug} />
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-navy/50">
+      <div className="animate-in animate-in-delay-2 mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-navy/50">
         <time>
           {new Date(post.date).toLocaleDateString("en-IN", {
             year: "numeric",
@@ -146,14 +150,14 @@ export default async function InsightPage({
         </span>
       </div>
       {post.author_name && (
-        <div className="mt-4 flex items-center gap-4">
+        <div className="animate-in animate-in-delay-3 mt-4 flex items-center gap-4">
           {post.author_photo_url && (
             <Image
               src={post.author_photo_url}
               alt={post.author_name}
               width={96}
               height={128}
-              className="h-32 w-24 shrink-0 rounded-xl object-cover"
+              className="h-32 w-24 shrink-0 rounded-xl object-cover transition-transform duration-300 hover:scale-[1.03]"
             />
           )}
           <div>
@@ -164,12 +168,18 @@ export default async function InsightPage({
           </div>
         </div>
       )}
-      <p className="text-body-justify mt-8 text-lg text-navy/75">
+      <p className="animate-in animate-in-delay-3 text-body-justify mt-8 text-lg text-navy/75">
         {post.excerpt}
       </p>
-      <ArticleContent html={post.content} />
-      <ShareButtons url={url} title={post.title} slug={post.slug} />
-      <RelatedArticles current={post} />
+      <Reveal>
+        <ArticleContent html={post.content} />
+      </Reveal>
+      <Reveal>
+        <ShareButtons url={url} title={post.title} slug={post.slug} />
+      </Reveal>
+      <Reveal>
+        <RelatedArticles current={post} />
+      </Reveal>
     </article>
   );
 }
