@@ -58,27 +58,25 @@ export default function Header() {
 
         <button
           type="button"
-          className="md:hidden text-navy"
+          className="relative h-6 w-6 shrink-0 text-navy md:hidden"
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-            {open ? (
-              <path
-                d="M6 6L18 18M6 18L18 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            ) : (
-              <path
-                d="M4 7H20M4 12H20M4 17H20"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            )}
-          </svg>
+          <span
+            className={`absolute left-0 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
+              open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1"
+            }`}
+          />
+          <span
+            className={`absolute left-0 top-1/2 h-0.5 w-6 -translate-y-1/2 rounded-full bg-current transition-opacity duration-200 ${
+              open ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`absolute left-0 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
+              open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1"
+            }`}
+          />
         </button>
       </div>
 
