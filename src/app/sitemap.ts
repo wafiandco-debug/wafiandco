@@ -2,7 +2,12 @@ import type { MetadataRoute } from "next";
 import { getInsights, INSIGHTS_PER_PAGE } from "@/lib/insights";
 import { siteConfig } from "@/lib/site";
 
-export const revalidate = 60;
+// revalidate alone wasn't reliably picking up new articles (same caching
+// quirk found on the opengraph-image routes) — force-dynamic guarantees
+// every request reflects the current database state. Sitemaps are fetched
+// infrequently (mostly by crawlers), so per-request freshness matters far
+// more here than the small extra latency.
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const insights = await getInsights();
