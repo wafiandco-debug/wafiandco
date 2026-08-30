@@ -5,6 +5,12 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Page Not Found | " + siteConfig.name,
   description: "The page you're looking for doesn't exist or may have moved.",
+  // Next.js always injects its own <meta name="robots" content="noindex">
+  // on a 404 response, on top of whatever we set here — so this page
+  // always ends up with two robots tags no matter what. Explicitly setting
+  // noindex here (rather than leaving it unset, which inherits the root
+  // layout's "index, follow") at least keeps both tags in agreement
+  // instead of directly contradicting each other.
   robots: { index: false, follow: true },
 };
 
