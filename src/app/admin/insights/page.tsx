@@ -1,9 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { supabaseAdmin } from "@/lib/supabase";
 import DeleteInsightButton from "@/components/admin/DeleteInsightButton";
 import type { Insight } from "@/lib/insights";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Manage Insights | WAFI & CO. Admin",
+};
 
 export default async function AdminInsightsPage() {
   if (!supabaseAdmin) {

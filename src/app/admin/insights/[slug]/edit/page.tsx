@@ -1,9 +1,13 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import InsightForm from "@/components/admin/InsightForm";
 import { supabaseAdmin } from "@/lib/supabase";
 import type { Insight } from "@/lib/insights";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Edit Article | WAFI & CO. Admin",
+};
 
 export default async function EditInsightPage({
   params,

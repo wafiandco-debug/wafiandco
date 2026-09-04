@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import InsightForm from "@/components/admin/InsightForm";
+
+export const metadata: Metadata = {
+  title: "New Article | WAFI & CO. Admin",
+};
 
 export default function NewInsightPage() {
   return (
