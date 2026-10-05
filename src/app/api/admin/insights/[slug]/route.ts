@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase";
 import { sanitizeArticleHtml } from "@/lib/sanitizeArticleHtml";
+import { submitToIndexNow } from "@/lib/indexnow";
 
 export async function PUT(
   req: Request,
@@ -49,6 +50,8 @@ export async function PUT(
   revalidatePath("/sitemap.xml");
   revalidatePath("/feed.xml");
 
+  after(() => submitToIndexNow([`/insights/${slug}`, "/insights"]));
+
   return NextResponse.json({ ok: true });
 }
 
@@ -69,6 +72,9 @@ export async function DELETE(
   revalidatePath("/insights");
   revalidatePath("/sitemap.xml");
   revalidatePath("/feed.xml");
+
+  // Removed articles are submitted too, so engines drop the dead URL sooner.
+  after(() => submitToIndexNow([`/insights/${slug}`, "/insights"]));
 
   return NextResponse.json({ ok: true });
 }

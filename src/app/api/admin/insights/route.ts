@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase";
 import { sanitizeArticleHtml } from "@/lib/sanitizeArticleHtml";
+import { submitToIndexNow } from "@/lib/indexnow";
 
 export async function GET() {
   if (!supabaseAdmin) {
@@ -56,6 +57,8 @@ export async function POST(req: Request) {
   revalidatePath("/insights");
   revalidatePath("/sitemap.xml");
   revalidatePath("/feed.xml");
+
+  after(() => submitToIndexNow([`/insights/${slug}`, "/insights"]));
 
   return NextResponse.json({ ok: true });
 }
