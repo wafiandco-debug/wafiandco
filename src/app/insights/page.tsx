@@ -34,24 +34,30 @@ export async function generateMetadata({
   // told Google the "real" content lived on page 1 alone, putting
   // page 2+ articles at risk of never being indexed.
   const canonical = page > 1 ? `${siteConfig.url}/insights?page=${page}` : `${siteConfig.url}/insights`;
+  // Page 2+ get their own wording: identical descriptions across URLs are
+  // flagged as duplicates by Bing Webmaster Tools.
+  const description =
+    page > 1
+      ? `Page ${page} of our practical articles on audit, tax, GST, income tax, and compliance from WAFI & CO., Chartered Accountants in Calicut, Kerala.`
+      : baseDescription;
 
   return {
     title,
-    description: baseDescription,
+    description,
     alternates: {
       canonical,
       types: { "application/rss+xml": `${siteConfig.url}/feed.xml` },
     },
     openGraph: {
       title,
-      description: baseDescription,
+      description,
       url: canonical,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: baseDescription,
+      description,
     },
   };
 }
